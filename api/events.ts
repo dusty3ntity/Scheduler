@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const events = [
+export const events = [
 	{
 		name: "Go to the dentist",
 		date: moment().add(1, "d"),
@@ -26,5 +26,3 @@ const events = [
 		endTime: moment().add(3, "d").hour(18).minute(45),
 	},
 ];
-
-module.exports = events;
