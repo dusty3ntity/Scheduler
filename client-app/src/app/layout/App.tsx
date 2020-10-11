@@ -5,7 +5,7 @@ import HomePage from "./HomePage";
 import NotFoundPage from "./NotFoundPage";
 import CalendarPage from "../../components/calendar/CalendarPage";
 
-const App = () => {
+const App: React.FC = () => {
 	return (
 		<>
 			<Route exact path="/">

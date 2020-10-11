@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"node-sass": "^4.14.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.2.0"
@@ -11,6 +10,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"lint": "./node_modules/.bin/eslint src/app/layout/App.tsx",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
@@ -26,6 +26,11 @@
 		"@types/react": "^16.9.50",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-router-dom": "^5.1.6",
+		"@typescript-eslint/eslint-plugin": "^4.4.0",
+		"@typescript-eslint/parser": "^4.4.0",
+		"node-sass": "^4.14.1",
+		"eslint": "^7.11.0",
+		"eslint-plugin-react": "^7.21.4",
 		"react-scripts": "3.4.3",
 		"typescript": "^3.7.5"
 	},
