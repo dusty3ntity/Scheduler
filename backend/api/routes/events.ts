@@ -12,6 +12,18 @@ const initEventsRoutes = (router: Router): void => {
     return res.json(events).status(200);
   });
 
+  route.get("/:id", async (req: Request, res: Response) => {
+    try {
+      const event = (await Event.find({ _id: req.params.id }))[0];
+      if (event) {
+        return res.json(event).status(200);
+      }
+      return res.status(404).end();
+    } catch {
+      return res.status(500).end();
+    }
+  });
+
   route.post("/", async (req: Request, res: Response) => {
     try {
       const event = new Event(req.body);
