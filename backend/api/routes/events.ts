@@ -1,12 +1,15 @@
 import { Response, Router } from "express";
 
-import { events } from "./../../events";
+import Event from "../../models/event";
 
 const initEventsRoutes = (router: Router): void => {
 	const route = Router();
 
 	router.use("/events", route);
-	route.get("/", (_, res: Response) => res.send(events));
+	route.get("/", async (_, res: Response) => {
+		const events = await Event.find({});
+		return res.json(events).status(200);
+	});
 };
 
 export default initEventsRoutes;
