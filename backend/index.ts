@@ -1,11 +1,15 @@
 import express from "express";
 
-import { events } from "./events";
+import initializeExpress from "./loaders/express";
 
-const app = express();
+const start = () => {
+	const app = express();
 
-app.get("/api/events", (_, res) => res.send(events));
+	initializeExpress({ app: app });
 
-app.listen(5080, () => {
-	console.log("Server running on port 5080");
-});
+	app.listen(5080, () => {
+		console.log("Server running on port 5080");
+	});
+};
+
+start();
