@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 import { Db } from "mongodb";
 
+import config from "../config";
+
 const initializeMongoose = async (): Promise<Db> => {
 	try {
-		const conection = await mongoose.connect("mongodb://localhost:27017/scheduler", {
+		const conection = await mongoose.connect(config.dbConnectionString, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			useCreateIndex: true,
