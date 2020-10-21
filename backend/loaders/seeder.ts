@@ -1,15 +1,15 @@
-// @ts-ignore
 import moment from "moment";
 
 import Event from "../models/event";
 
-const seedData = async () =>{
+const seedData = async (): Promise<void> => {
 	const events = await Event.exists({});
-	if(events) {
+	if (events) {
 		return;
 	}
-	const success= await Event.insertMany(testEvents);
-	if(success){
+	const success = await Event.insertMany(testEvents);
+
+	if (success) {
 		console.log("Seeded test data");
 	} else {
 		throw new Error("Problem seeding data");
