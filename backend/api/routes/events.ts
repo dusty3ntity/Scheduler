@@ -37,11 +37,23 @@ const initEventsRoutes = (router: Router): void => {
 		}
 	});
 
+	route.put("/:id", async (req: Request, res: Response) => {
+		try {
+			const success = await Event.updateOne({_id: req.params.id}, req.body);
+			if (success.nModified) {
+				return res.status(204).end();
+			}
+			return res.status(404).end();
+		} catch (err) {
+			return res.status(500).end();
+		}
+	});
+
 	route.delete("/:id", async (req: Request, res: Response) => {
 		try {
 			const success = await Event.deleteOne({_id: req.params.id});
 			if (success.deletedCount) {
-				return res.status(200).end();
+				return res.status(204).end();
 			}
 			return res.status(404).end();
 		} catch (err) {
