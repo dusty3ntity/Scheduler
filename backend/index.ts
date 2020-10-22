@@ -1,11 +1,16 @@
 import express from "express";
 
-import { events } from "./events";
+import config from "./config";
+import initLoaders from "./loaders";
 
-const app = express();
+const runServer = async () => {
+	const app = express();
 
-app.get("/api/events", (_, res) => res.send(events));
+	await initLoaders({ app });
 
-app.listen(5080, () => {
-	console.log("Server running on port 5080");
-});
+	app.listen(config.port, () => {
+		console.log(`Server running on port ${config.port}`);
+	});
+};
+
+runServer();
