@@ -1,5 +1,5 @@
 import { Response, Router, Request } from "express";
-const Joi = require("joi");
+import Joi from "joi";
 
 import Event from "../../models/event";
 
