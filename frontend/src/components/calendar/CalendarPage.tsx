@@ -2,7 +2,7 @@ import React from "react";
 
 const CalendarPage: React.FC = () => {
 	return (
-		<div>
+		<div id="calendar-page" className="page">
 			Calendar
 		</div>
 	);

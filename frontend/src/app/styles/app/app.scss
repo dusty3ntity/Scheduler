@@ -1,3 +1,27 @@
 @import "./colors.scss";
 @import "./breakpoints.scss";
 @import "./typography.scss";
+@import "./other.scss";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: $background-color;
+
+	user-select: text;
+}
+
+#root {
+	min-height: 720px;
+	min-width: 960px;
+	width: 100vw;
+	height: 100vh;
+}
+
+.page {
+	display: flex;
+	height: 100%;
+}

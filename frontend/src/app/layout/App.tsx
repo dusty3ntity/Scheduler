@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import HomePage from "./HomePage";
@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
 			<Route
 				path={"/(.+)"}
-				render={() => (
+				render={(): ReactNode => (
 					<Switch>
 						<Route exact path="/calendar">
 							<CalendarPage />
