@@ -58,6 +58,7 @@ const Button: React.FC<ButtonProps> = ({
 			onClick={handleClick}
 			{...props}
 		>
+			{icon}
 			{text && <span className={combineClassNames(textClassName)}>{text}</span>}
 			{children}
 			{rightIcon}
