@@ -1,0 +1,42 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	background-color: rgb(248, 246, 247);
+	border: 0.1rem solid #000;
+	height: 3rem;
+}
+
+.name-of-calendar {
+	font-style: italic;
+	font-size: 1.5rem;
+	color: black;
+	margin: 2rem;
+}
+
+.today-panel-button {
+	border-radius: 10%;
+	height: 1.5rem;
+	width: 3.4rem;
+}
+
+.arrow-panel-button {
+	width: 1.7rem;
+	height: 1.7rem;
+	margin-left: 2rem;
+}
+
+.leftA-arrow {
+	margin-left: 2rem;
+}
+
+.right-arrow {
+	margin-left: 1rem;
+}
+
+.month-and-year {
+	font-style: italic;
+	font-size: 1rem;
+	color: black;
+	margin-left: 2rem;
+}
