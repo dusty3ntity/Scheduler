@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import Calendar from "react-calendar";
-import { BsPlusCircle } from "react-icons/bs";
-import 'react-calendar/dist/Calendar.css';
+import React from "react";
+
+import PlusIcon from "../common/icons/PlusIcon";
 import Button from "../common/inputs/Button";
+import SmallCalendar from "./SmallCalendar";
 
 const Sidebar: React.FC = () => {
-	const [date, setDate] = useState<Date>();
 	return (
-		<div id="sideBar">
-			<button className = {"sideBar-button"}>
-				<BsPlusCircle className={"icon-plus"} /> Add event
-			</button>
-			<Calendar onChange={()=>setDate(date)} value={date} locale = "US" />
+		<div className="sidebar">
+			<div className="btn-container">
+				<Button className="add-event-btn" icon={<PlusIcon />} text="Create" />
+			</div>
+
+			<div className="calendar-container">
+				<SmallCalendar />
+			</div>
 		</div>
 	);
 };

@@ -4,6 +4,8 @@ import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import * as serviceWorker from "./serviceWorker";
 
+import "react-calendar/dist/Calendar.css";
+
 import "./app/styles/styles.scss";
 
 import App from "./app/layout/App";

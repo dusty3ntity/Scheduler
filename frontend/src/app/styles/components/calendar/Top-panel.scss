@@ -1,42 +1,41 @@
-.wrapper {
+.top-panel {
+	height: 4rem;
 	display: flex;
 	align-items: center;
-	flex-direction: row;
-	background-color: rgb(248, 246, 247);
-	border: 0.1rem solid #000;
-	height: 3rem;
-}
+	padding: 1rem;
+	margin-bottom: 1rem;
 
-.name-of-calendar {
-	font-style: italic;
-	font-size: 1.5rem;
-	color: black;
-	margin: 2rem;
-}
+	border-bottom: 1px solid $main-color;
 
-.today-panel-button {
-	border-radius: 10%;
-	height: 1.5rem;
-	width: 3.4rem;
-}
+	.logo-container {
+		width: 12.5%;
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin-right: 1rem;
+	}
 
-.arrow-panel-button {
-	width: 1.7rem;
-	height: 1.7rem;
-	margin-left: 2rem;
-}
+	.btn-group {
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
 
-.leftA-arrow {
-	margin-left: 2rem;
-}
+	.today-btn {
+		font-size: 1.2rem;
+	}
 
-.right-arrow {
-	margin-left: 1rem;
-}
+	.arrow-buttons {
+		display: flex;
+		margin: 0 1rem 0 2rem;
+	}
 
-.month-and-year {
-	font-style: italic;
-	font-size: 1rem;
-	color: black;
-	margin-left: 2rem;
+	.arrow-btn {
+		margin: 0 2px;
+		padding: 4px;
+		border: none;
+	}
+
+	.date-interval {
+		font-size: 1.2rem;
+	}
 }

@@ -1,0 +1,26 @@
+.react-calendar {
+	&__navigation {
+		margin-bottom: 0;
+
+		&__label {
+			order: -1;
+			text-align: left;
+			font-size: 1rem;
+			font-weight: 600;
+		}
+
+		&__prev2-button,
+		&__next2-button {
+			display: none;
+		}
+	}
+
+	&__month-view__weekdays abbr {
+		text-decoration: none;
+	}
+
+	.small-calendar-icon {
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+}
