@@ -1,20 +1,12 @@
-import moment from "moment";
+import moment, { Moment } from "moment";
 
-import { Day } from "./../../models/time";
-
-export const getAllDaysInWeek = (currentDate = moment()): Day[] => {
+export const getAllDaysInWeek = (currentDate = moment()): Moment[] => {
 	const weekStart = moment(currentDate).startOf("isoWeek").set("minutes", 0).set("seconds", 0);
-	const result: Day[] = [];
+	const result: Moment[] = [];
 
 	for (let i = 0; i < 7; i++) {
 		const weekDay = moment(weekStart).add(i, "days");
-
-		const day: Day = {
-			name: weekDay.format("ddd"),
-			index: weekDay.date(),
-		};
-
-		result.push(day);
+		result.push(weekDay);
 	}
 
 	return result;

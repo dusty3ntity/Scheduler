@@ -1,0 +1,1 @@
+export const HOUR_CELL_HIGHT = 80;

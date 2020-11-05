@@ -5,6 +5,8 @@ import { getAllDaysInWeek, getMonthIntervalString } from "../../app/common/util/
 import Sidebar from "./Sidebar";
 import TopPanel from "./TopPanel";
 import WeekView from "./week-view/WeekView";
+import { testEvents } from "../../app/models/events";
+import { combineDatesWithEvents } from "../../app/common/util/events";
 
 const CalendarPage: React.FC = () => {
 	const [currentWeek, setCurrentWeek] = useState(moment());
@@ -35,7 +37,7 @@ const CalendarPage: React.FC = () => {
 			<div className="page-content">
 				<Sidebar />
 
-				<WeekView days={getAllDaysInWeek(currentWeek)} />
+				<WeekView days={combineDatesWithEvents(getAllDaysInWeek(currentWeek), testEvents)} />
 			</div>
 		</div>
 	);

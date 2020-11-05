@@ -1,5 +1,6 @@
 .week-day {
 	flex: 1;
+	position: relative;
 	text-align: center;
 
 	border-right: 1px solid black;
@@ -7,5 +8,12 @@
 
 	&:last-child {
 		border: none;
+	}
+
+	.event {
+		position: absolute;
+		width: 90%;
+		
+		background-color: lightblue;
 	}
 }

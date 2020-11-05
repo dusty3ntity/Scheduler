@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Day } from "../../../app/models/time";
+import { Day } from "../../../app/models/events";
 import TimesColumn from "./TimesColumn";
 import WeekDay from "./WeekDay";
 import WeekDayHeader from "./WeekDayHeader";
@@ -18,7 +18,7 @@ const WeekView: React.FC<WeekViewProps> = ({ days }) => {
 				</div>
 
 				{days.map((day) => (
-					<WeekDayHeader key={day.index} day={day} />
+					<WeekDayHeader key={day.date.toString()} day={day} />
 				))}
 			</div>
 
@@ -26,7 +26,7 @@ const WeekView: React.FC<WeekViewProps> = ({ days }) => {
 				<TimesColumn />
 
 				{days.map((day) => (
-					<WeekDay key={day.index} day={day} />
+					<WeekDay key={day.date.toString()} day={day} />
 				))}
 			</div>
 		</div>
