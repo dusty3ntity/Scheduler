@@ -1,12 +1,13 @@
 import React from "react";
 
 import { times } from "../../../app/models/time";
+import { HOUR_CELL_HIGHT } from "../../../app/models/calendar";
 
 const TimesColumn: React.FC = () => {
 	return (
 		<div className="times-col">
 			{times.map((time) => (
-				<span key={time}>{`${time}:00`}</span>
+				<span style={{ minHeight: HOUR_CELL_HIGHT }} key={time}>{`${time}:00`}</span>
 			))}
 		</div>
 	);

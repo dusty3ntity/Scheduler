@@ -1,8 +1,7 @@
 import React from "react";
-import moment from "moment";
 
-import { Day } from "../../../app/models/events";
-import { getDayEventStyles } from "../../../app/common/util/calendar";
+import { Day, Event } from "../../../app/models/events";
+import EventCard from "./EventCard";
 
 export interface WeekDayProps {
 	day: Day;
@@ -11,11 +10,8 @@ export interface WeekDayProps {
 const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
 	return (
 		<div className="week-day">
-			{day.events.map((event) => (
-				<div className="event" style={getDayEventStyles(event)} key={event.startDate.toString()}>
-					<div>{event.title}</div>
-					<div>{`${moment(event.startDate).format("hh mm")} - ${moment(event.endDate).format("hh mm")}`}</div>
-				</div>
+			{day.events.map((event: Event) => (
+				<EventCard key={event.title} event={event} />
 			))}
 		</div>
 	);
