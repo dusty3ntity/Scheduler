@@ -4,7 +4,14 @@ import Button from "../common/inputs/Button";
 import LeftArrowIcon from "../common/icons/LeftArrowIcon";
 import RightArrowIcon from "../common/icons/RightArrowIcon";
 
-const TopPanel: React.FC = () => {
+interface TopPanelProps {
+	onToday: () => void;
+	onPrev: () => void;
+	onNext: () => void;
+	dateInterval: string;
+}
+
+const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dateInterval }) => {
 	return (
 		<div className="top-panel">
 			<div className="logo-container">
@@ -12,15 +19,15 @@ const TopPanel: React.FC = () => {
 			</div>
 
 			<div className="btn-group">
-				<Button className="today-btn" text={"Today"} />
+				<Button className="today-btn" text="Today" onClick={onToday} />
 
 				<div className="arrow-buttons">
-					<Button className="arrow-btn left-arrow" icon={<LeftArrowIcon />} />
-					<Button className="arrow-btn right-arrow" icon={<RightArrowIcon />} />
+					<Button className="arrow-btn left-arrow" icon={<LeftArrowIcon />} onClick={onPrev} />
+					<Button className="arrow-btn right-arrow" icon={<RightArrowIcon />} onClick={onNext} />
 				</div>
 			</div>
 
-			<div className="date-interval">October 2020</div>
+			<div className="date-interval">{dateInterval}</div>
 		</div>
 	);
 };

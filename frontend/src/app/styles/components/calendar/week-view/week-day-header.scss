@@ -1,0 +1,16 @@
+.week-day-header {
+	flex: 1;
+	min-height: 3rem;
+
+	text-align: center;
+	border-right: 1px solid black;
+
+
+	&:last-child {
+		border: none;
+	}
+
+	.day-name {
+		margin-right: 8px;
+	}
+}
