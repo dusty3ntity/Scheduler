@@ -1,10 +1,10 @@
 import React from "react";
 
-import { IComponentProps } from "../../../app/models/components";
-import { combineClassNames } from "../../../app/common/util/classNames";
+import { ComponentProps } from "../../../models/components";
+import { combineClassNames } from "../../../utils/classNames";
 import CheckIcon from "../icons/CheckIcon";
 
-export interface CheckboxProps extends IComponentProps {
+export interface CheckboxProps extends ComponentProps {
 	checked?: boolean;
 	onChange?: (value: boolean) => void;
 	disabled?: boolean;

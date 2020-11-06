@@ -1,12 +1,12 @@
 import React from "react";
 
-import { IComponentProps } from "../../../app/models/components";
-import { combineClassNames } from "../../../app/common/util/classNames";
+import { ComponentProps } from "../../../models/components";
+import { combineClassNames } from "../../../utils/classNames";
 
 /**
  * Icon name: add-24px
  */
-const PlusIcon: React.FC<IComponentProps> = ({ id, className, ...props }) => {
+const PlusIcon: React.FC<ComponentProps> = ({ id, className, ...props }) => {
 	return (
 		<svg id={id} className={combineClassNames("icon plus-icon", className)} viewBox="0 0 24 24" {...props}>
 			<path d="M0 0h24v24H0V0z" fill="none" />

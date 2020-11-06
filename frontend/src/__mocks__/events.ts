@@ -1,15 +1,6 @@
 import moment from "moment";
 
-export interface Event {
-	title: string;
-	startDate: Date;
-	endDate: Date;
-}
-
-export interface Day {
-	date: Date;
-	events: Event[];
-}
+import { Event } from "../models/events";
 
 export const testEvents: Event[] = [
 	{

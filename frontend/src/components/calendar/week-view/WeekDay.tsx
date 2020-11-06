@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Day, Event } from "../../../app/models/events";
+import { Day, Event } from "../../../models/events";
 import EventCard from "./EventCard";
 
 export interface WeekDayProps {

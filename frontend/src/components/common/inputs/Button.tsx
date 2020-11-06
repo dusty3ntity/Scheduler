@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 
-import { IComponentProps } from "../../../app/models/components";
-import { combineClassNames } from "../../../app/common/util/classNames";
+import { ComponentProps } from "../../../models/components";
+import { combineClassNames } from "../../../utils/classNames";
 
-export interface ButtonProps extends IComponentProps {
+export interface ButtonProps extends ComponentProps {
 	type?: "button" | "submit" | "reset";
 	icon?: ReactNode;
 	text?: string;

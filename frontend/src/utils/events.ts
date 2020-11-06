@@ -1,6 +1,6 @@
 import moment, { Moment } from "moment";
 
-import { Day, Event } from "./../../models/events";
+import { Day, Event } from "../models/events";
 
 export const combineDatesWithEvents = (dates: Moment[], events: Event[]): Day[] => {
 	const result: Day[] = [];

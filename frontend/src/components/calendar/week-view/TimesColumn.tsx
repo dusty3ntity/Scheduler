@@ -1,7 +1,7 @@
 import React from "react";
 
-import { times } from "../../../app/models/time";
-import { HOUR_CELL_HIGHT } from "../../../app/models/calendar";
+import { times } from "../../../models/time";
+import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
 
 const TimesColumn: React.FC = () => {
 	return (

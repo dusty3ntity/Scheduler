@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-import { Day } from "../../../app/models/events";
+import { Day } from "../../../models/events";
 
 export interface WeekDayHeaderProps {
 	day: Day;

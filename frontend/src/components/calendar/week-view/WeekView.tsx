@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Day } from "../../../app/models/events";
+import { Day } from "../../../models/events";
 import TimesColumn from "./TimesColumn";
 import WeekDay from "./WeekDay";
 import WeekDayHeader from "./WeekDayHeader";

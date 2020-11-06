@@ -1,8 +1,8 @@
 import React from "react";
 import moment from "moment";
 
-import { Event } from "../../../app/models/events";
-import { getDayEventStyles } from "../../../app/common/util/calendar";
+import { Event } from "../../../models/events";
+import { getDayEventStyles } from "../../../utils/calendar";
 
 export interface EventCardProps {
 	event: Event;

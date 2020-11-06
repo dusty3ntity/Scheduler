@@ -1,4 +1,4 @@
-export interface IComponentProps {
+export interface ComponentProps {
 	id?: string;
 	className?: string;
 }
