@@ -4,6 +4,7 @@ import { Day } from "../../../models/events";
 import TimesColumn from "./TimesColumn";
 import WeekDay from "./WeekDay";
 import WeekDayHeader from "./WeekDayHeader";
+import moment from "moment";
 
 export interface WeekViewProps {
 	days: Day[];
@@ -18,7 +19,7 @@ const WeekView: React.FC<WeekViewProps> = ({ days }) => {
 				</div>
 
 				{days.map((day) => (
-					<WeekDayHeader key={day.date.toString()} day={day} />
+					<WeekDayHeader key={day.date.toString()} day={day} isCurrentDay={moment().format("DD-MM-YYYY") === moment(day.date).format("DD-MM-YYYY")}/>
 				))}
 			</div>
 

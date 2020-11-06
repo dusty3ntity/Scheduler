@@ -13,4 +13,11 @@
 	.day-name {
 		margin-right: 8px;
 	}
+
+	&.current-day .day-date {
+		background-color: #4a9cef;
+		border-radius: 50%;
+		padding: 0 8px;
+		color: $background-color;
+	}
 }
