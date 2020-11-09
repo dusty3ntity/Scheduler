@@ -4,7 +4,12 @@ import PlusIcon from "../common/icons/PlusIcon";
 import Button from "../common/inputs/Button";
 import SmallCalendar from "./SmallCalendar";
 
-const Sidebar: React.FC = () => {
+export interface SidebarProps {
+	defaultDay: Date;
+	onClickDate: (date: Date) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ defaultDay, onClickDate }) => {
 	return (
 		<div className="sidebar">
 			<div className="btn-container">
@@ -12,7 +17,7 @@ const Sidebar: React.FC = () => {
 			</div>
 
 			<div className="calendar-container">
-				<SmallCalendar />
+				<SmallCalendar day={defaultDay} onClickDate={onClickDate} />
 			</div>
 		</div>
 	);
