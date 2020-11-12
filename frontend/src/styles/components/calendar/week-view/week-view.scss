@@ -31,6 +31,26 @@
 		}
 	}
 
+	.time-highlighter{
+		position: absolute;
+		height: 2px;
+		width: 100%;
+		background-color: #f00;
+		left: 0;
+		z-index: 100;
+	}
+
+	.oval{
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background-color: #f02;
+		border-radius: 50%;
+		left: 0;
+		z-index: 100;
+		top:-4px;
+	}
+
 	.view-header {
 		display: flex;
 		border-bottom: 1px solid $main-color;
