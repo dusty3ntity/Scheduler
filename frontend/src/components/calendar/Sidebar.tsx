@@ -5,11 +5,11 @@ import Button from "../common/inputs/Button";
 import SmallCalendar from "./SmallCalendar";
 
 export interface SidebarProps {
-	defaultDay: Date;
-	onClickDate: (date: Date) => void;
+	activeDate: Date;
+	onDayClick: (date: Date) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ defaultDay, onClickDate }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
 	return (
 		<div className="sidebar">
 			<div className="btn-container">
@@ -17,7 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ defaultDay, onClickDate }) => {
 			</div>
 
 			<div className="calendar-container">
-				<SmallCalendar day={defaultDay} onClickDate={onClickDate} />
+				<SmallCalendar activeDate={activeDate} onDayClick={onDayClick} />
 			</div>
 		</div>
 	);

@@ -36,11 +36,14 @@ const CalendarPage: React.FC = () => {
 
 			<div className="page-content">
 				<Sidebar
-					defaultDay={currentWeek.toDate()}
-					onClickDate={(date: Date): void => setCurrentWeek(moment(date))}
+					activeDate={currentWeek.toDate()}
+					onDayClick={(date: Date): void => setCurrentWeek(moment(date))}
 				/>
 
-				<WeekView days={combineDatesWithEvents(getAllDaysInWeek(currentWeek), testEvents)} />
+				<WeekView
+					days={combineDatesWithEvents(getAllDaysInWeek(currentWeek), testEvents)}
+					isCurrentWeek={currentWeek.week() === moment().week()}
+				/>
 			</div>
 		</div>
 	);

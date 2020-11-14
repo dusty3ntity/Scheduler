@@ -1,22 +1,23 @@
 import React from "react";
 import Calendar from "react-calendar";
+
 import LeftArrowIcon from "../common/icons/LeftArrowIcon";
 import RightArrowIcon from "../common/icons/RightArrowIcon";
 
 export interface SmallCalendarProps {
-	day: Date;
-	onClickDate: (date: Date) => void;
+	activeDate: Date;
+	onDayClick: (date: Date) => void;
 }
 
-const SmallCalendar: React.FC<SmallCalendarProps> = ({ day, onClickDate }) => {
+const SmallCalendar: React.FC<SmallCalendarProps> = ({ activeDate, onDayClick }) => {
 	return (
 		<Calendar
 			locale="en-US"
 			prevLabel={<LeftArrowIcon className="small-calendar-icon" />}
 			nextLabel={<RightArrowIcon className="small-calendar-icon" />}
 			showNeighboringMonth={false}
-			defaultActiveStartDate={day}
-			onClickDay={onClickDate}
+			defaultActiveStartDate={activeDate}
+			onClickDay={onDayClick}
 		/>
 	);
 };

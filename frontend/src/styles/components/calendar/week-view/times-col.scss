@@ -1,0 +1,52 @@
+.times-col-header,
+.times-col {
+	width: 80px;
+	display: flex;
+	flex-direction: column;
+
+	border-right: 1px solid $main-color;
+
+	span {
+		text-align: right;
+		margin-right: 10px;
+	}
+}
+
+.times-col span {
+	&::after {
+		content: "";
+		position: absolute;
+		height: 1px;
+		width: 100%;
+		background-color: $main-color;
+		left: 0;
+	}
+
+	&:first-child::after {
+		content: none;
+	}
+}
+
+.time-highlighter {
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	left: 0;
+
+	background-color: #f00;
+	z-index: 100;
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 10px;
+		height: 10px;
+
+		left: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+
+		background-color: #f02;
+		border-radius: 50%;
+	}
+}
