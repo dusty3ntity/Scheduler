@@ -10,9 +10,9 @@ button {
 	justify-content: center;
 	cursor: pointer;
 
-	border: 1px solid grey;
+	border: 1px solid $main-color;
 	background-color: $background-color;
-	transition: all 0.3s;
+	transition: background-color 0.3s;
 
 	.icon + span,
 	span + .icon {
@@ -20,12 +20,12 @@ button {
 	}
 
 	&:hover {
-		background: #f6f9fe;
+		background: $light-grey-color;
 	}
 
 	&:active,
 	&.active {
-		background: darken(#f6f9fe, 5%);
+		background: darken($light-grey-color, 5%);
 	}
 }
 

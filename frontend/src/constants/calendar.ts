@@ -1,1 +1,1 @@
-export const HOUR_CELL_HIGHT = 60;
+export const HOUR_CELL_HIGHT = 55;

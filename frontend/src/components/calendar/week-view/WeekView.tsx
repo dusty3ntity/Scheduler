@@ -24,9 +24,7 @@ const WeekView: React.FC<WeekViewProps> = ({ days, isCurrentWeek }) => {
 	return (
 		<div className="calendar-view week-view" ref={scrollableCalendar}>
 			<div className="view-header">
-				<div className="times-col-header">
-					<span>GMT+02</span>
-				</div>
+				<div className="times-col-header" />
 
 				{days.map((day) => (
 					<WeekDayHeader

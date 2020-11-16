@@ -36,7 +36,7 @@ const CalendarPage: React.FC = () => {
 
 			<div className="page-content">
 				<Sidebar
-					activeDate={currentWeek.toDate()}
+					activeDate={currentWeek}
 					onDayClick={(date: Date): void => setCurrentWeek(moment(date))}
 				/>
 

@@ -14,8 +14,10 @@ const WeekDayHeader: React.FC<WeekDayHeaderProps> = ({ day, isToday }) => {
 
 	return (
 		<div className={combineClassNames("week-day-header", { "current-day": isToday })}>
-			<span className="day-name">{date.format("ddd")}</span>
-			<span className="day-date">{date.date()}</span>
+			<div className="date-container">
+				<span className="day-name">{date.format("ddd")}</span>
+				<div className="day-date">{date.date()}</div>
+			</div>
 		</div>
 	);
 };

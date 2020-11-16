@@ -1,11 +1,12 @@
 import React from "react";
+import { Moment } from "moment";
 
 import PlusIcon from "../common/icons/PlusIcon";
 import Button from "../common/inputs/Button";
 import SmallCalendar from "./SmallCalendar";
 
 export interface SidebarProps {
-	activeDate: Date;
+	activeDate: Moment;
 	onDayClick: (date: Date) => void;
 }
 
