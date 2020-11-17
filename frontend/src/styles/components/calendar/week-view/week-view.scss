@@ -1,0 +1,21 @@
+@import "./week-day-header.scss";
+@import "./week-day.scss";
+@import "./times-col.scss";
+
+.week-view {
+	.view-header {
+		display: flex;
+		border-bottom: 1px solid $main-color;
+
+		position: sticky;
+		top: 0;
+		background-color: $background-color;
+		z-index: 1;
+	}
+
+	.view-content {
+		flex-grow: 2;
+		display: flex;
+		position: relative;
+	}
+}

@@ -1,0 +1,44 @@
+button {
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	border: 1px solid $main-color;
+	background-color: $background-color;
+	transition: background-color 0.3s;
+
+	.icon + span,
+	span + .icon {
+		margin-left: 8px;
+	}
+
+	&:hover {
+		background: $light-grey-color;
+	}
+
+	&:active,
+	&.active {
+		background: darken($light-grey-color, 5%);
+	}
+}
+
+.btn.round {
+	border-radius: 50%;
+}
+
+a {
+	transition: none;
+	background: none;
+	text-decoration: none;
+
+	&:hover {
+		color: unset;
+	}
+}
