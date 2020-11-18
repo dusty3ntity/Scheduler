@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import HomePage from "../home/HomePage";
 import NotFoundPage from "../not-found/NotFoundPage";
 import CalendarPage from "../calendar/CalendarPage";
+import CreateEventPage from "../events/CreateEventPage";
 
 const App: React.FC = () => {
 	return (
@@ -18,6 +19,10 @@ const App: React.FC = () => {
 					<Switch>
 						<Route exact path="/calendar">
 							<CalendarPage />
+						</Route>
+
+						<Route exact path="/create-event">
+							<CreateEventPage />
 						</Route>
 
 						<Route exact path="/not-found">

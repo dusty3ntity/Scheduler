@@ -1,8 +1,8 @@
 import React from "react";
 import { Moment } from "moment";
+import { Link } from "react-router-dom";
 
 import PlusIcon from "../common/icons/PlusIcon";
-import Button from "../common/inputs/Button";
 import SmallCalendar from "./SmallCalendar";
 
 export interface SidebarProps {
@@ -14,7 +14,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
 	return (
 		<div className="sidebar">
 			<div className="btn-container">
-				<Button className="add-event-btn" icon={<PlusIcon />} text="Create" />
+				<Link to="/create-event" className="btn add-event-btn">
+					<PlusIcon />
+					<span>Create</span>
+				</Link>
 			</div>
 
 			<div className="calendar-container">
