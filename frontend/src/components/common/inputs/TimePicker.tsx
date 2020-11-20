@@ -15,7 +15,7 @@ export interface TimePickerProps extends ComponentProps {
 }
 
 const TimePicker = React.forwardRef<HTMLInputElement, TimePickerProps>(
-	({ values, onValueClick, name, value, onChange, id, className }, ref) => {
+	({ values, onValueClick, name, value, onChange, id, className, ...props }, ref) => {
 		const [dropdownExpanded, setDropdownExpanded] = useState(false);
 
 		const handleItemClick = (value: string): void => {
@@ -56,6 +56,7 @@ const TimePicker = React.forwardRef<HTMLInputElement, TimePickerProps>(
 				onOpen={(): void => setDropdownExpanded(true)}
 				onClose={(): void => setDropdownExpanded(false)}
 				expanded={dropdownExpanded}
+				{...props}
 			/>
 		);
 	}

@@ -2,8 +2,8 @@ import React from "react";
 import moment, { Moment } from "moment";
 import Calendar from "react-calendar";
 
-import LeftArrowIcon from "../common/icons/LeftArrowIcon";
-import RightArrowIcon from "../common/icons/RightArrowIcon";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
 
 export interface SmallCalendarProps {
 	activeDate: Moment;

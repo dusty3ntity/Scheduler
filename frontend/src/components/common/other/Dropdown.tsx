@@ -63,7 +63,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 			})}
 			{...props}
 		>
-			<div className="dropdown-button btn" ref={buttonRef} onClick={onOpen}>
+			<div className="dropdown-button btn" ref={buttonRef} onClick={items.length > 0 ? onOpen : undefined}>
 				<div className="button-content-wrapper">
 					{buttonContent}
 

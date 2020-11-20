@@ -1,10 +1,13 @@
-.dropdown {
+.date-picker {
 	position: relative;
 
-	.dropdown-button {
+	.date-input {
+		@include visually-hidden;
+	}
+
+	.date-picker-button {
 		height: 100%;
 		width: 100%;
-		padding: 0 0.75rem;
 
 		background: $background-color;
 
@@ -24,64 +27,16 @@
 		padding: 8px;
 	}
 
-	.dropdown-icon {
-		width: 2rem;
-		height: 2rem;
-		margin-left: 1.3rem;
-
-		transition: all 0.3s;
-	}
-
-	.dropdown-menu {
-		width: 100%;
+	.date-picker-menu {
 		position: absolute;
 		top: calc(100% + 0.8rem);
 		left: 0;
-		padding: 1rem 0.75rem;
+		padding: 0 8px;
+		border: 1px solid $main-color;
 
 		z-index: 1000;
 		transition: opacity 0.4s;
 		background: $background-color;
-	}
-
-	.menu-item {
-		width: 100%;
-		margin: 0.5rem 0;
-
-		cursor: pointer;
-		transition: all 0.3s;
-
-		&:first-child {
-			margin-top: 0;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		&:hover {
-			background: lighten($light-blue-color, 20%);
-		}
-
-		&.active {
-			background: $light-blue-color;
-		}
-	}
-
-	.menu-actions {
-		height: 1.75rem;
-		margin-top: 1rem;
-		padding: 0 8px;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		.actions-btn {
-			height: 100%;
-			padding: 2px 0;
-			border-radius: 1.25rem;
-		}
 	}
 
 	&-open {
@@ -91,14 +46,14 @@
 				inset 3px 3px 8px rgba(211, 220, 228, 0.9), inset -3px -3px 6px rgba(243, 254, 255, 0.9),
 				inset 3px -3px 6px rgba(211, 220, 228, 0.2), inset -3px 3px 6px rgba(211, 220, 228, 0.2) !important;
 		}
-
-		.dropdown-icon {
-			transform: rotateX(180deg);
-		}
 	}
 
-	&-closed .dropdown-menu {
+	&-closed .date-picker-menu {
 		opacity: 0;
 		transform: translate(-9999px, -9999px);
+	}
+
+	.react-calendar {
+		width: 16rem;
 	}
 }

@@ -3,7 +3,7 @@ import { Moment } from "moment";
 import { Link } from "react-router-dom";
 
 import PlusIcon from "../common/icons/PlusIcon";
-import SmallCalendar from "./SmallCalendar";
+import SmallCalendar from "../common/other/SmallCalendar";
 
 export interface SidebarProps {
 	activeDate: Moment;

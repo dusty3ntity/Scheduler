@@ -27,6 +27,11 @@ button {
 	&.active {
 		background: darken($light-grey-color, 5%);
 	}
+
+	&:disabled {
+		background: $light-grey-color;
+		color: $grey-color;
+	}
 }
 
 .btn.round {
