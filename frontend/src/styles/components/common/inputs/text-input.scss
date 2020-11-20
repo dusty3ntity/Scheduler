@@ -1,0 +1,28 @@
+.text-input {
+	padding: 8px;
+	font-size: 1.5rem;
+	font-weight: 500;
+
+	background: $background-color;
+	color: $main-text-color;
+
+	border: 1px solid $main-color;
+
+	transition: all 0.3s;
+
+	box-shadow: inset -5px 10px 40px -29px rgba(0,0,0,0.5);
+
+	&:hover,
+	&:focus {
+		background: lighten($light-grey-color, 4%);
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.text-area {
+	resize: none;
+	overflow: hidden;
+}

@@ -1,14 +1,14 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import moment from "moment";
 
-import {Event} from "../../../models/events";
-import {getDayEventStyles} from "../../../utils/calendar";
+import { Event } from "../../../models/events";
+import { getDayEventStyles } from "../../../utils/calendar";
 
 export interface EventCardProps {
 	event: Event;
 }
 
-const EventCard: React.FC<EventCardProps> = ({event}) => {
+const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	const timeInterval = `${moment(event.startDate).format("HH:mm")} – ${moment(event.endDate).format("HH:mm")}`;
 	const eventCardRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +27,12 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
 	});
 
 	return (
-		<div className="event-card" style={getDayEventStyles(event)} key={event.startDate.toString()} ref={eventCardRef}>
+		<div
+			className="event-card"
+			style={getDayEventStyles(event)}
+			key={event.startDate.toString()}
+			ref={eventCardRef}
+		>
 			<span className="title">{event.title}</span>
 			<span className="time-interval">{timeInterval}</span>
 		</div>

@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-import { times } from "../../../models/time";
+import { hours } from "../../../models/time";
 import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
 import Highlighter from "./Highlighter";
 
@@ -14,8 +14,8 @@ const TimesColumn: React.FC<TimesColumnProps> = ({ isHighlighterVisible }) => {
 		<div className="times-col">
 			{isHighlighterVisible && <Highlighter time={moment()} />}
 
-			{times.map((time) => (
-				<span style={{ minHeight: HOUR_CELL_HIGHT }} key={time}>{`${time}:00`}</span>
+			{hours.map((hour) => (
+				<span style={{ minHeight: HOUR_CELL_HIGHT }} key={hour}>{`${hour}:00`}</span>
 			))}
 		</div>
 	);
