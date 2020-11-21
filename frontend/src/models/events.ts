@@ -13,7 +13,7 @@ export interface Day {
 
 export interface NewEventFormValues {
 	date: Moment;
-	timeFrom?: string;
+	timeFrom: string;
 }
 
 export interface EventFormFields {

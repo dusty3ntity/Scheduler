@@ -4,7 +4,7 @@ import React, {useEffect, useRef, useState} from "react";
 
 import {ComponentProps} from "../../../models/components";
 import {combineClassNames} from "../../../utils/classNames";
-import SmallCalendar from "../other/SmallCalendar";
+import {SmallCalendar} from "../other/SmallCalendar";
 
 export interface DatePickerProps extends ComponentProps {
 	date?: Date;
