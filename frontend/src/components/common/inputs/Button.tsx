@@ -17,7 +17,7 @@ export interface ButtonProps extends ComponentProps {
 	rightIcon?: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
 	id,
 	className,
 
@@ -65,5 +65,3 @@ const Button: React.FC<ButtonProps> = ({
 		</button>
 	);
 };
-
-export default Button;

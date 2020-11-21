@@ -20,13 +20,11 @@ export const getMonthIntervalString = (currentDate = moment()): string => {
 
 	if (weekStart.get("month") === weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
 		return weekStart.format("MMMM y");
-	}
-
-	if (weekStart.get("month") !== weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
+	}else if (weekStart.get("month") !== weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
 		return `${weekStart.format("MMM")} - ${weekEnd.format("MMM")} ${weekStart.format("y")}`;
+	}else {
+		return `${weekStart.format("MMM")} ${weekStart.format("y")} - ${weekEnd.format("MMM")} ${weekEnd.format("y")}`;
 	}
-
-	return `${weekStart.format("MMM")} ${weekStart.format("y")} - ${weekEnd.format("MMM")} ${weekEnd.format("y")}`;
 };
 
 export const getNextTimeValue = (timeFrom: string): string => {

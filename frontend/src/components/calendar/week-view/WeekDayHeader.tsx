@@ -9,7 +9,7 @@ export interface WeekDayHeaderProps {
 	isToday: boolean;
 }
 
-const WeekDayHeader: React.FC<WeekDayHeaderProps> = ({ day, isToday }) => {
+export const WeekDayHeader: React.FC<WeekDayHeaderProps> = ({ day, isToday }) => {
 	const date = moment(day.date);
 
 	return (
@@ -21,5 +21,3 @@ const WeekDayHeader: React.FC<WeekDayHeaderProps> = ({ day, isToday }) => {
 		</div>
 	);
 };
-
-export default WeekDayHeader;

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 
 import { Day, Event } from "../../../models/events";
-import EventCard from "./EventCard";
+import {EventCard} from "./EventCard";
 
 export interface WeekDayProps {
 	day: Day;
 }
 
-const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
+export const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
 	const dayRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -31,5 +31,3 @@ const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
 		</div>
 	);
 };
-
-export default WeekDay;

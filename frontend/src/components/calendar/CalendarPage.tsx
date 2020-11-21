@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import moment from "moment";
 
-import { getAllDaysInWeek, getMonthIntervalString } from "../../utils/time";
-import Sidebar from "./Sidebar";
-import TopPanel from "./TopPanel";
-import WeekView from "./week-view/WeekView";
-import { testEvents } from "../../__mocks__/events";
-import { combineDatesWithEvents } from "../../utils/events";
+import {getAllDaysInWeek, getMonthIntervalString} from "../../utils/time";
+import {Sidebar} from "./Sidebar";
+import {TopPanel} from "./TopPanel";
+import {WeekView} from "./week-view/WeekView";
+import {testEvents} from "../../__mocks__/events";
+import {combineDatesWithEvents} from "../../utils/events";
 
-const CalendarPage: React.FC = () => {
+export const CalendarPage: React.FC = () => {
 	const [currentWeek, setCurrentWeek] = useState(moment());
 
 	const onToday = (): void => {
@@ -48,5 +48,3 @@ const CalendarPage: React.FC = () => {
 		</div>
 	);
 };
-
-export default CalendarPage;

@@ -1,10 +1,10 @@
 import React from "react";
 import moment from "moment";
 
-import EventForm from "./EventForm";
+import {EventForm} from "./EventForm";
 import { Event, NewEventFormValues } from "../../models/events";
 
-const CreateEventPage: React.FC = () => {
+export const CreateEventPage: React.FC = () => {
 	const onSubmit = (event: Event): void => {
 		console.log("New event:", event);
 	};
@@ -22,5 +22,3 @@ const CreateEventPage: React.FC = () => {
 		</div>
 	);
 };
-
-export default CreateEventPage;

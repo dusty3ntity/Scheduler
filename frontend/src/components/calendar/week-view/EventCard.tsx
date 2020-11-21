@@ -8,7 +8,7 @@ export interface EventCardProps {
 	event: Event;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ event }) => {
+export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	const timeInterval = `${moment(event.startDate).format("HH:mm")} – ${moment(event.endDate).format("HH:mm")}`;
 	const eventCardRef = useRef<HTMLDivElement>(null);
 
@@ -38,5 +38,3 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 		</div>
 	);
 };
-
-export default EventCard;

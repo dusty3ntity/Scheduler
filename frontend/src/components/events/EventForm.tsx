@@ -7,9 +7,9 @@ import { Event, EventFormFields, NewEventFormValues } from "../../models/events"
 import { times } from "../../models/time";
 import { combineClassNames } from "../../utils/classNames";
 import { getNextTimeValue } from "../../utils/time";
-import Button from "../common/inputs/Button";
-import DatePicker from "../common/inputs/DatePicker";
-import TimePicker from "../common/inputs/TimePicker";
+import {Button} from "../common/inputs/Button";
+import {DatePicker} from "../common/inputs/DatePicker";
+import {TimePicker} from "../common/inputs/TimePicker";
 
 export interface EventFormProps extends ComponentProps {
 	event?: Event;
@@ -17,7 +17,7 @@ export interface EventFormProps extends ComponentProps {
 	onSubmit: (event: Event) => void;
 }
 
-const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit }) => {
+export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit }) => {
 	const defaultFormValues = {
 		title: event?.title || "",
 		date: event?.startDate || newEventData?.date,
@@ -92,5 +92,3 @@ const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventDat
 		</form>
 	);
 };
-
-export default EventForm;

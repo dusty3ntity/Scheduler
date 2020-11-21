@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 
 import { Day } from "../../../models/events";
-import TimesColumn from "./TimesColumn";
-import WeekDay from "./WeekDay";
-import WeekDayHeader from "./WeekDayHeader";
+import {TimesColumn} from "./TimesColumn";
+import {WeekDay} from "./WeekDay";
+import {WeekDayHeader} from "./WeekDayHeader";
 import moment from "moment";
 import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
 
@@ -12,7 +12,7 @@ export interface WeekViewProps {
 	isCurrentWeek: boolean;
 }
 
-const WeekView: React.FC<WeekViewProps> = ({ days, isCurrentWeek }) => {
+export const WeekView: React.FC<WeekViewProps> = ({ days, isCurrentWeek }) => {
 	const scrollableCalendar = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -45,5 +45,3 @@ const WeekView: React.FC<WeekViewProps> = ({ days, isCurrentWeek }) => {
 		</div>
 	);
 };
-
-export default WeekView;

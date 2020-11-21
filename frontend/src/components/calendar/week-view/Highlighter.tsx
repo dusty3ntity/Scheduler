@@ -7,7 +7,7 @@ export interface HighlighterProps {
 	time: Moment;
 }
 
-const Highlighter: React.FC<HighlighterProps> = ({ time }) => {
+export const Highlighter: React.FC<HighlighterProps> = ({ time }) => {
 	const offset = time.diff(moment(time).set({ hour: 0, minute: 0 }), "minutes");
 	const styles = {
 		top: (offset / 60) * HOUR_CELL_HIGHT,
@@ -15,5 +15,3 @@ const Highlighter: React.FC<HighlighterProps> = ({ time }) => {
 
 	return <span className="time-highlighter" style={styles} />;
 };
-
-export default Highlighter;

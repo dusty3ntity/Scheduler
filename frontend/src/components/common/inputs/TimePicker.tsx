@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
-import Dropdown from "../other/Dropdown";
+import {ComponentProps} from "../../../models/components";
+import {combineClassNames} from "../../../utils/classNames";
+import {Dropdown} from "../other/Dropdown";
 
 export interface TimePickerProps extends ComponentProps {
 	values: string[];
@@ -14,8 +14,8 @@ export interface TimePickerProps extends ComponentProps {
 	onChange?: (value: string) => void;
 }
 
-const TimePicker = React.forwardRef<HTMLInputElement, TimePickerProps>(
-	({ values, onValueClick, name, value, onChange, id, className, ...props }, ref) => {
+export const TimePicker = React.forwardRef<HTMLInputElement, TimePickerProps>(
+	({values, onValueClick, name, value, onChange, id, className, ...props}, ref) => {
 		const [dropdownExpanded, setDropdownExpanded] = useState(false);
 
 		const handleItemClick = (value: string): void => {
@@ -61,5 +61,3 @@ const TimePicker = React.forwardRef<HTMLInputElement, TimePickerProps>(
 		);
 	}
 );
-
-export default TimePicker;

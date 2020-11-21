@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {Link} from "react-router-dom";
 
-const NotFoundPage: React.FC = ({ ...props }) => {
+export const NotFoundPage: React.FC = ({...props}) => {
 	useEffect(() => {
 		document.title = "Not found - Scheduler";
 	}, []);
@@ -20,5 +20,3 @@ const NotFoundPage: React.FC = ({ ...props }) => {
 		</div>
 	);
 };
-
-export default NotFoundPage;

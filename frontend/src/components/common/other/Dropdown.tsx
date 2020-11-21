@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef, useEffect } from "react";
+import React, {useRef, useEffect} from "react";
 
-import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
-import DropdownIcon from "../icons/DropdownIcon";
+import {ComponentProps} from "../../../models/components";
+import {combineClassNames} from "../../../utils/classNames";
+import {CheckIcon} from "../icons/DropdownIcon";
 
 export interface DropdownProps extends ComponentProps {
 	items: any[];
@@ -17,21 +17,21 @@ export interface DropdownProps extends ComponentProps {
 	buttonContent: any;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
-	id,
-	className,
+export const Dropdown: React.FC<DropdownProps> = ({
+													  id,
+													  className,
 
-	items,
-	expanded,
-	onItemClick,
-	iconVisible,
+													  items,
+													  expanded,
+													  onItemClick,
+													  iconVisible,
 
-	onOpen,
-	onClose,
+													  onOpen,
+													  onClose,
 
-	buttonContent,
-	...props
-}) => {
+													  buttonContent,
+													  ...props
+												  }) => {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +67,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 				<div className="button-content-wrapper">
 					{buttonContent}
 
-					{iconVisible && <DropdownIcon />}
+					{iconVisible && <CheckIcon/>}
 				</div>
 			</div>
 
@@ -81,5 +81,3 @@ const Dropdown: React.FC<DropdownProps> = ({
 		</div>
 	);
 };
-
-export default Dropdown;
