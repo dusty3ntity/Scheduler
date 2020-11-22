@@ -1,8 +1,8 @@
 import React from "react";
 
-import {ComponentProps} from "../../../models/components";
-import {combineClassNames} from "../../../utils/classNames";
-import {CheckIcon} from "../icons/CheckIcon";
+import { ComponentProps } from "../../../models/components";
+import { combineClassNames } from "../../../utils/classNames";
+import { CheckIcon } from "../Icons/CheckIcon";
 
 export interface CheckboxProps extends ComponentProps {
 	checked?: boolean;
@@ -10,7 +10,15 @@ export interface CheckboxProps extends ComponentProps {
 	disabled?: boolean;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({id, className, checked, onChange, disabled, children, ...props}) => {
+export const Checkbox: React.FC<CheckboxProps> = ({
+	id,
+	className,
+	checked,
+	onChange,
+	disabled,
+	children,
+	...props
+}) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		if (onChange) {
 			onChange(e.target.checked);
@@ -24,9 +32,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({id, className, checked, onCha
 			{...props}
 			onClick={(e): void => e.stopPropagation()}
 		>
-			<input type="checkbox" checked={checked} disabled={disabled} onChange={handleChange}/>
+			<input type="checkbox" checked={checked} disabled={disabled} onChange={handleChange} />
 			<span className="checkbox">
-				<CheckIcon className="check"/>
+				<CheckIcon className="check" />
 			</span>
 
 			<span className="checkbox-content">{children}</span>

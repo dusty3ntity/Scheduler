@@ -1,10 +1,10 @@
 /* eslint-disable react/display-name */
 import moment from "moment";
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import {ComponentProps} from "../../../models/components";
-import {combineClassNames} from "../../../utils/classNames";
-import {SmallCalendar} from "../other/SmallCalendar";
+import { ComponentProps } from "../../../models/components";
+import { combineClassNames } from "../../../utils/classNames";
+import { SmallCalendar } from "../SmallCalendar";
 
 export interface DatePickerProps extends ComponentProps {
 	date?: Date;
@@ -15,7 +15,7 @@ export interface DatePickerProps extends ComponentProps {
 }
 
 export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
-	({date, name, value, onChange, id, className, ...props}, ref) => {
+	({ date, name, value, onChange, id, className, ...props }, ref) => {
 		const [calendarExpanded, setCalendarExpanded] = useState(false);
 
 		const buttonRef = useRef<HTMLDivElement>(null);

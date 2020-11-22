@@ -20,9 +20,9 @@ export const getMonthIntervalString = (currentDate = moment()): string => {
 
 	if (weekStart.get("month") === weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
 		return weekStart.format("MMMM y");
-	}else if (weekStart.get("month") !== weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
-		return `${weekStart.format("MMM")} - ${weekEnd.format("MMM")} ${weekStart.format("y")}`;
-	}else {
+	} else if (weekStart.get("month") !== weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
+		return `${weekStart.format("MMM")} - ${weekEnd.format("MMM y")}`;
+	} else {
 		return `${weekStart.format("MMM")} ${weekStart.format("y")} - ${weekEnd.format("MMM")} ${weekEnd.format("y")}`;
 	}
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import moment, { Moment } from "moment";
 
-import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
+import { HOUR_CELL_HIGHT } from "../../../../constants/calendar";
 
 export interface HighlighterProps {
 	time: Moment;

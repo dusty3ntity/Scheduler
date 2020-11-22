@@ -8,7 +8,7 @@ import "react-calendar/dist/Calendar.css";
 import "./styles/styles.scss";
 
 import { history } from "./config/history";
-import {App} from "./components/app/App";
+import { App } from "./components/App/App";
 
 ReactDOM.render(
 	<React.StrictMode>

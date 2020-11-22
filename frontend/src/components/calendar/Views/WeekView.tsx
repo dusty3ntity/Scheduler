@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
+import moment from "moment";
 
 import { Day } from "../../../models/events";
-import {TimesColumn} from "./TimesColumn";
-import {WeekDay} from "./WeekDay";
-import {WeekDayHeader} from "./WeekDayHeader";
-import moment from "moment";
+import { TimesColumn } from "./Common/TimesColumn";
+import { WeekDay } from "./Common/WeekDay";
+import { WeekDayHeader } from "./Common/WeekDayHeader";
 import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
 
 export interface WeekViewProps {

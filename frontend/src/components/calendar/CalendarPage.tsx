@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
-import {getAllDaysInWeek, getMonthIntervalString} from "../../utils/time";
-import {Sidebar} from "./Sidebar";
-import {TopPanel} from "./TopPanel";
-import {WeekView} from "./week-view/WeekView";
-import {testEvents} from "../../__mocks__/events";
-import {combineDatesWithEvents} from "../../utils/events";
+import { getAllDaysInWeek, getMonthIntervalString } from "../../utils/time";
+import { Sidebar } from "./Sidebar";
+import { TopPanel } from "./TopPanel";
+import { WeekView } from "./Views/WeekView";
+import { testEvents } from "../../__mocks__/events";
+import { combineDatesWithEvents } from "../../utils/events";
 
 export const CalendarPage: React.FC = () => {
 	const [currentWeek, setCurrentWeek] = useState(moment());
@@ -35,10 +35,7 @@ export const CalendarPage: React.FC = () => {
 			/>
 
 			<div className="page-content">
-				<Sidebar
-					activeDate={currentWeek}
-					onDayClick={(date: Date): void => setCurrentWeek(moment(date))}
-				/>
+				<Sidebar activeDate={currentWeek} onDayClick={(date: Date): void => setCurrentWeek(moment(date))} />
 
 				<WeekView
 					days={combineDatesWithEvents(getAllDaysInWeek(currentWeek), testEvents)}

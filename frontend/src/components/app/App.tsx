@@ -1,15 +1,15 @@
-import React, {ReactNode} from "react";
-import {Redirect, Route, Switch} from "react-router-dom";
+import React, { ReactNode } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import {HomePage} from "../home/HomePage";
-import {NotFoundPage} from "../not-found/NotFoundPage";
-import {CalendarPage} from "../calendar/CalendarPage";
-import {CreateEventPage} from "../events/CreateEventPage";
+import { HomePage } from "../Home/HomePage";
+import { NotFoundPage } from "../NotFound/NotFoundPage";
+import { CalendarPage } from "../Calendar/CalendarPage";
+import { CreateEventPage } from "../Events/CreateEventPage";
 
-export const App: React.FC = () => (
+export const App: React.FC = (): JSX.Element => (
 	<>
 		<Route exact path="/">
-			<HomePage/>
+			<HomePage />
 		</Route>
 
 		<Route
@@ -17,23 +17,22 @@ export const App: React.FC = () => (
 			render={(): ReactNode => (
 				<Switch>
 					<Route exact path="/calendar">
-						<CalendarPage/>
+						<CalendarPage />
 					</Route>
 
 					<Route exact path="/create-event">
-						<CreateEventPage/>
+						<CreateEventPage />
 					</Route>
 
 					<Route exact path="/not-found">
-						<NotFoundPage/>
+						<NotFoundPage />
 					</Route>
 
 					<Route>
-						<Redirect to="/not-found"/>
+						<Redirect to="/not-found" />
 					</Route>
 				</Switch>
 			)}
 		/>
 	</>
 );
-

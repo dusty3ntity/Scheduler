@@ -7,9 +7,9 @@ import { Event, EventFormFields, NewEventFormValues } from "../../models/events"
 import { times } from "../../models/time";
 import { combineClassNames } from "../../utils/classNames";
 import { getNextTimeValue } from "../../utils/time";
-import {Button} from "../common/inputs/Button";
-import {DatePicker} from "../common/inputs/DatePicker";
-import {TimePicker} from "../common/inputs/TimePicker";
+import { Button } from "../Common/Inputs/Button";
+import { DatePicker } from "../Common/Inputs/DatePicker";
+import { TimePicker } from "../Common/Inputs/TimePicker";
 
 export interface EventFormProps extends ComponentProps {
 	event?: Event;
