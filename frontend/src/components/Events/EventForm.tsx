@@ -3,7 +3,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { ComponentProps } from "../../models/components";
-import { Event, EventFormFields, NewEventFormValues } from "../../models/events";
+import { EventI, NewEventFormValuesI } from "../../models/events";
 import { times } from "../../models/time";
 import { combineClassNames } from "../../utils/classNames";
 import { getNextTimeValue } from "../../utils/time";
@@ -11,10 +11,17 @@ import { Button } from "../Common/Inputs/Button";
 import { DatePicker } from "../Common/Inputs/DatePicker";
 import { TimePicker } from "../Common/Inputs/TimePicker";
 
+export interface EventFormFields {
+	title: string;
+	date: Date;
+	timeFrom: string;
+	timeTo: string;
+}
+
 export interface EventFormProps extends ComponentProps {
-	event?: Event;
-	newEventData?: NewEventFormValues;
-	onSubmit: (event: Event) => void;
+	event?: EventI;
+	newEventData?: NewEventFormValuesI;
+	onSubmit: (event: EventI) => void;
 }
 
 export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit }) => {
@@ -32,7 +39,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 	const submit = (data: EventFormFields): void => {
 		const { title, date, timeFrom, timeTo } = data;
 
-		const event: Event = {
+		const event: EventI = {
 			title: title || "(no title)",
 			startDate: moment(date)
 				.set({ hour: +timeFrom.split(":")[0], minute: +timeFrom.split(":")[1], second: 0 })

@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
 
-import { Day, Event } from "../../../../models/events";
+import { DayI, EventI } from "../../../../models/events";
 import { EventCard } from "./EventCard";
 import { HOUR_CELL_HIGHT } from "../../../../constants/calendar";
 
 export interface WeekDayProps {
-	day: Day;
+	day: DayI;
 }
 
 export const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
@@ -39,7 +39,7 @@ export const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
 	};
 	return (
 		<div className="week-day" ref={dayRef}>
-			{day.events.map((event: Event) => (
+			{day.events.map((event: EventI) => (
 				<EventCard key={event.title} event={event} />
 			))}
 		</div>

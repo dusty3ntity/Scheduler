@@ -1,20 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import "react-calendar/dist/Calendar.css";
 
 import "./styles/styles.scss";
 
-import { history } from "./config/history";
 import { App } from "./components/App/App";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Router history={history}>
-			<App />
-		</Router>
+		<App />
 	</React.StrictMode>,
 	document.getElementById("root")
 );

@@ -1,9 +1,9 @@
 import moment from "moment";
 
 import { HOUR_CELL_HIGHT } from "../constants/calendar";
-import { Event } from "../models/events";
+import { EventI } from "../models/events";
 
-export const getDayEventStyles = (event: Event): React.CSSProperties => {
+export const getDayEventStyles = (event: EventI): React.CSSProperties => {
 	const startDate = moment(event.startDate);
 	const endDate = moment(event.endDate);
 

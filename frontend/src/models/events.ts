@@ -1,24 +1,17 @@
 import { Moment } from "moment";
 
-export interface Event {
+export interface EventI {
 	title: string;
 	startDate: Date;
 	endDate: Date;
 }
 
-export interface Day {
+export interface DayI {
 	date: Date;
-	events: Event[];
+	events: EventI[];
 }
 
-export interface NewEventFormValues {
+export interface NewEventFormValuesI {
 	date: Moment;
 	timeFrom: string;
-}
-
-export interface EventFormFields {
-	title: string;
-	date: Date;
-	timeFrom: string;
-	timeTo: string;
 }

@@ -1,8 +1,8 @@
 import moment from "moment";
 
-import { Event } from "../models/events";
+import { EventI } from "../models/events";
 
-export const testEvents: Event[] = [
+export const testEvents: EventI[] = [
 	{
 		title: "NIT",
 		startDate: moment().subtract(1, "d").hour(13).minute(30).toDate(),

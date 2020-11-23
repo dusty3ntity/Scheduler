@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import moment, { Moment } from "moment";
 
 import { CURRENT_TIME_UPDATE_INTERVAL } from "../constants/time";
@@ -7,7 +7,17 @@ interface TimeContextValue {
 	currentTime: Moment;
 }
 
-export const TimeContext = createContext({} as TimeContextValue);
+export const TimeContext = createContext<TimeContextValue | undefined>(undefined);
+
+export const useTimeContext = (): TimeContextValue => {
+	const c = useContext(TimeContext);
+
+	if (!c) {
+		throw new Error("useTimeContext must be inside TimeProvider");
+	}
+
+	return c;
+};
 
 export const TimeProvider: React.FC = ({ children }) => {
 	const [currentTime, setCurrentTime] = useState(moment());

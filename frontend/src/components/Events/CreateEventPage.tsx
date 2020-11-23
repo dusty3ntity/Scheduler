@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import moment from "moment";
 import { useLocation, useHistory } from "react-router-dom";
 
 import { EventForm } from "./EventForm";
-import { Event, NewEventFormValues } from "../../models/events";
-import { EventsContext } from "../../contexts/EventsContext";
+import { EventI, NewEventFormValuesI } from "../../models/events";
+import { useEventsContext } from "../../contexts/EventsContext";
 
 export const CreateEventPage: React.FC = () => {
-	const { addEvent } = useContext(EventsContext);
+	const { events, setEvents } = useEventsContext();
 	const history = useHistory();
-	
-	const onSubmit = (event: Event): void => {
+
+	const onSubmit = (event: EventI): void => {
 		console.log("New event:", event);
-		addEvent(event);
+		setEvents([...events, event]);
 		history.goBack();
 	};
 
@@ -22,7 +22,7 @@ export const CreateEventPage: React.FC = () => {
 
 	const query = useQuery();
 
-	const newEventData: NewEventFormValues = {
+	const newEventData: NewEventFormValuesI = {
 		date: moment(query.get("date"), "DD-MM-YYYY"),
 		timeFrom: query.get("time") || "8:00",
 	};

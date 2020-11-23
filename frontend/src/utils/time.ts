@@ -2,8 +2,8 @@ import moment, { Moment } from "moment";
 
 import { times } from "./../models/time";
 
-export const getAllDaysInWeek = (currentDate = moment()): Moment[] => {
-	const weekStart = moment(currentDate).startOf("isoWeek").set("minutes", 0).set("seconds", 0);
+export const getAllDaysInWeek = (date: Moment): Moment[] => {
+	const weekStart = moment(date).startOf("isoWeek").startOf("day");
 	const result: Moment[] = [];
 
 	for (let i = 0; i < 7; i++) {
@@ -14,16 +14,16 @@ export const getAllDaysInWeek = (currentDate = moment()): Moment[] => {
 	return result;
 };
 
-export const getMonthIntervalString = (currentDate = moment()): string => {
-	const weekStart = moment(currentDate).startOf("isoWeek");
-	const weekEnd = moment(currentDate).endOf("isoWeek");
+export const getMonthIntervalString = (date: Moment): string => {
+	const weekStart = moment(date).startOf("isoWeek");
+	const weekEnd = moment(date).endOf("isoWeek");
 
 	if (weekStart.get("month") === weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
 		return weekStart.format("MMMM y");
 	} else if (weekStart.get("month") !== weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
 		return `${weekStart.format("MMM")} - ${weekEnd.format("MMM y")}`;
 	} else {
-		return `${weekStart.format("MMM")} ${weekStart.format("y")} - ${weekEnd.format("MMM")} ${weekEnd.format("y")}`;
+		return `${weekStart.format("MMM y")} - ${weekEnd.format("MMM y")}`;
 	}
 };
 

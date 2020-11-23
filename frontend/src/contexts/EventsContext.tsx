@@ -1,22 +1,29 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 import { testEvents } from "../__mocks__/events";
-import { Event } from "../models/events";
+import { EventI } from "../models/events";
 
 interface EventsContextValue {
-	events: Event[];
-	addEvent: (event: Event) => void;
+	events: EventI[];
+	setEvents: React.Dispatch<React.SetStateAction<EventI[]>>;
 }
-export const EventsContext = createContext({} as EventsContextValue);
 
-export const EventsProvider: React.FC = ({ children }) => {
-	const [events, setEvents] = useState<Event[]>(testEvents);
+export const EventsContext = createContext<EventsContextValue | undefined>(undefined);
 
-	const addEvent = (event: Event): void => {
-		setEvents([...events, event]);
-	};
+export const useEventsContext = (): EventsContextValue => {
+	const c = useContext(EventsContext);
 
-	const value = { events, addEvent };
+	if (!c) {
+		throw new Error("useEventContext must be inside EventsProvider");
+	}
+
+	return c;
+};
+
+export const EventsProvider: React.FC = ({ children }): JSX.Element => {
+	const [events, setEvents] = useState<EventI[]>(testEvents);
+
+	const value = { events, setEvents };
 
 	return <EventsContext.Provider value={value}>{children}</EventsContext.Provider>;
 };

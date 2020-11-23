@@ -1,19 +1,20 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useEffect } from "react";
+import moment from "moment";
 
-import { Day } from "../../../models/events";
+import { DayI } from "../../../models/events";
 import { TimesColumn } from "./Common/TimesColumn";
 import { WeekDay } from "./Common/WeekDay";
 import { WeekDayHeader } from "./Common/WeekDayHeader";
 import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
-import { TimeContext } from "../../../contexts/TimeContext";
+import { useTimeContext } from "../../../contexts/TimeContext";
 
 export interface WeekViewProps {
-	days: Day[];
+	days: DayI[];
 	isCurrentWeek: boolean;
 }
 
 export const WeekView: React.FC<WeekViewProps> = ({ days, isCurrentWeek }) => {
-	const { currentTime } = useContext(TimeContext);
+	const { currentTime } = useTimeContext();
 	const scrollableCalendar = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -31,7 +32,7 @@ export const WeekView: React.FC<WeekViewProps> = ({ days, isCurrentWeek }) => {
 					<WeekDayHeader
 						key={day.date.toString()}
 						day={day}
-						isToday={currentTime.diff(day.date, "days") === 0}
+						isToday={moment(currentTime).startOf("day").isSame(day.date)}
 					/>
 				))}
 			</div>

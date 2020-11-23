@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import moment from "moment";
 
-import { Event } from "../../../../models/events";
+import { EventI } from "../../../../models/events";
 import { getDayEventStyles } from "../../../../utils/calendar";
 
 export interface EventCardProps {
-	event: Event;
+	event: EventI;
 }
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
