@@ -1,5 +1,5 @@
 import moment from "moment";
-import React from "react";
+import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { ComponentProps } from "../../models/components";
@@ -33,12 +33,10 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		timeTo: event ? moment(event.endDate).format("h:mm") : getNextTimeValue(newEventData!.timeFrom!),
 	};
 
-	const { register, control, watch, formState, handleSubmit, getValues, errors, setError } = useForm<EventFormFields>(
-		{
-			defaultValues: defaultFormValues,
-			mode: "onChange",
-		}
-	);
+	const { register, control, watch, formState, handleSubmit, getValues, errors, trigger } = useForm<EventFormFields>({
+		defaultValues: defaultFormValues,
+		mode: "onChange",
+	});
 
 	const submit = (data: EventFormFields): void => {
 		const { title, date, timeFrom, timeTo } = data;
@@ -57,10 +55,17 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 	};
 
 	const filterTimeToValues = (): string[] => {
-		//paste time validation
 		const timeFrom = moment(watch("timeFrom"), "h:mm");
 		return times.filter((time) => moment(time, "h:mm").diff(timeFrom) > 0);
 	};
+
+	const timeFrom = watch("timeFrom");
+	const timeTo = watch("timeTo");
+
+	useEffect(() => {
+		trigger("timeFrom");
+		trigger("timeTo");
+	}, [timeFrom, timeTo, trigger]);
 
 	return (
 		<form id={id} className={combineClassNames("event-form", className)} onSubmit={handleSubmit(submit)}>
@@ -85,18 +90,8 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 							name="timeFrom"
 							control={control}
 							rules={{
-								validate: (val: string) => {
-									const isTimeValid = getIsTimeValid(val);
-									if (!isTimeValid) {
-										return false;
-									}
-									const isTimeFromBeforeTimeTo = getIsTimeFromBeforeTimeTo(val, getValues("timeTo"));
-									// if (isTimeFromBeforeTimeTo) {
-									// 	setError("timeTo", {});
-									// }
-
-									return isTimeFromBeforeTimeTo;
-								},
+								validate: (val: string): boolean =>
+									getIsTimeValid(val) && getIsTimeFromBeforeTimeTo(val, getValues("timeTo")),
 							}}
 						/>
 
@@ -109,20 +104,8 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 							name="timeTo"
 							control={control}
 							rules={{
-								validate: (val: string) => {
-									const isTimeValid = getIsTimeValid(val);
-									if (!isTimeValid) {
-										return false;
-									}
-									const isTimeFromBeforeTimeTo = getIsTimeFromBeforeTimeTo(
-										getValues("timeFrom"),
-										val
-									);
-									// if (isTimeFromBeforeTimeTo) {
-									// 	setError("timeFrom", {});
-									// }
-									return isTimeFromBeforeTimeTo;
-								},
+								validate: (val: string): boolean =>
+									getIsTimeValid(val) && getIsTimeFromBeforeTimeTo(getValues("timeFrom"), val),
 							}}
 						/>
 					</div>
@@ -133,7 +116,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 				className="submit-btn"
 				text="Create"
 				type="submit"
-				disabled={!formState.isValid || (event && !formState.isDirty)}
+				disabled={(!formState.isValid && formState.isDirty) || (event && !formState.isDirty)}
 			/>
 		</form>
 	);

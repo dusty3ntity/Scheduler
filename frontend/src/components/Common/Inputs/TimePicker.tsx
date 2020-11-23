@@ -43,6 +43,8 @@ export const TimePicker = React.forwardRef<HTMLInputElement, TimePickerProps>(
 				ref={ref}
 				value={value}
 				onChange={handleInputChange}
+				maxLength={5}
+				minLength={4}
 			/>
 		);
 
