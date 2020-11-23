@@ -10,6 +10,7 @@ import { getNextTimeValue } from "../../utils/time";
 import { Button } from "../Common/Inputs/Button";
 import { DatePicker } from "../Common/Inputs/DatePicker";
 import { TimePicker } from "../Common/Inputs/TimePicker";
+import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
 
 export interface EventFormFields {
 	title: string;
@@ -32,9 +33,12 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		timeTo: event ? moment(event.endDate).format("h:mm") : getNextTimeValue(newEventData!.timeFrom!),
 	};
 
-	const { register, control, watch, formState, handleSubmit } = useForm<EventFormFields>({
-		defaultValues: defaultFormValues,
-	});
+	const { register, control, watch, formState, handleSubmit, getValues, errors, setError } = useForm<EventFormFields>(
+		{
+			defaultValues: defaultFormValues,
+			mode: "onChange",
+		}
+	);
 
 	const submit = (data: EventFormFields): void => {
 		const { title, date, timeFrom, timeTo } = data;
@@ -76,26 +80,61 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 					<div className="times-container">
 						<Controller
 							as={TimePicker}
-							className="time-from-picker"
+							className={combineClassNames("time-from-picker", { error: errors.timeFrom })}
 							values={times}
 							name="timeFrom"
 							control={control}
+							rules={{
+								validate: (val: string) => {
+									const isTimeValid = getIsTimeValid(val);
+									if (!isTimeValid) {
+										return false;
+									}
+									const isTimeFromBeforeTimeTo = getIsTimeFromBeforeTimeTo(val, getValues("timeTo"));
+									// if (isTimeFromBeforeTimeTo) {
+									// 	setError("timeTo", {});
+									// }
+
+									return isTimeFromBeforeTimeTo;
+								},
+							}}
 						/>
 
 						<span>to</span>
 
 						<Controller
 							as={TimePicker}
-							className="time-to-picker"
+							className={combineClassNames("time-to-picker", { error: errors.timeTo })}
 							values={filterTimeToValues()}
 							name="timeTo"
 							control={control}
+							rules={{
+								validate: (val: string) => {
+									const isTimeValid = getIsTimeValid(val);
+									if (!isTimeValid) {
+										return false;
+									}
+									const isTimeFromBeforeTimeTo = getIsTimeFromBeforeTimeTo(
+										getValues("timeFrom"),
+										val
+									);
+									// if (isTimeFromBeforeTimeTo) {
+									// 	setError("timeFrom", {});
+									// }
+									return isTimeFromBeforeTimeTo;
+								},
+							}}
 						/>
 					</div>
 				</div>
 			</div>
 
-			<Button className="submit-btn" text="Create" type="submit" disabled={event && !formState.isDirty} />
+			<Button
+				className="submit-btn"
+				text="Create"
+				type="submit"
+				disabled={!formState.isValid || (event && !formState.isDirty)}
+			/>
 		</form>
 	);
 };

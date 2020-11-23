@@ -1,4 +1,6 @@
-export const isTimeValid = (time: string): boolean => {
+import moment from "moment";
+
+export const getIsTimeValid = (time: string): boolean => {
 	if (
 		(time.match("^(([01][0-9])|([2][0-4]))[:][0-5][0-9]") && time.length <= 5) ||
 		(time.match("^[0-9][:][0-5][0-9]") && time.length <= 4)
@@ -6,4 +8,7 @@ export const isTimeValid = (time: string): boolean => {
 		return true;
 	}
 	return false;
+};
+export const getIsTimeFromBeforeTimeTo = (timeFrom: string, timeTo: string): boolean => {
+	return moment(timeFrom, "hh:mm").isBefore(moment(timeTo, "hh:mm"));
 };

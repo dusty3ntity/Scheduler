@@ -56,6 +56,10 @@
 			display: flex;
 			justify-content: center;
 		}
+
+		&.error .dropdown-button {
+			border-color: $red-color;
+		}
 	}
 
 	.submit-btn {
