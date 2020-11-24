@@ -5,7 +5,7 @@ import { EventI } from "./../../models/events";
 import { ComponentProps } from "../../models/components";
 import { EventCardModal } from "../../components/Events/EventModal";
 
-export const createEventModal = (event: EventI, onEdit: () => void, options?: ComponentProps): void => {
+export const createEventModal = (event: EventI, onEdit: () => void, onDelete: () => void, options?: ComponentProps): void => {
 	const modalContainer = document.createElement("div");
 	document.body.appendChild(modalContainer);
 
@@ -21,6 +21,7 @@ export const createEventModal = (event: EventI, onEdit: () => void, options?: Co
 			onExit: destroyModal,
 			event,
 			onEdit,
+			onDelete,
 			...options,
 		}),
 		modalContainer
