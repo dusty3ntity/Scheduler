@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
 import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
+import { combineClassNames } from "../../../utils/components/classNames";
 
 export interface ButtonProps extends ComponentProps {
 	type?: "button" | "submit" | "reset";

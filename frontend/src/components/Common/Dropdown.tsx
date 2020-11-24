@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 
 import { ComponentProps } from "../../models/components";
-import { combineClassNames } from "../../utils/classNames";
+import { combineClassNames } from "../../utils/components/classNames";
 import { CheckIcon } from "./Icons/DropdownIcon";
 
 export interface DropdownProps extends ComponentProps {

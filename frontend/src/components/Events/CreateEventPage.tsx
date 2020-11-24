@@ -7,12 +7,12 @@ import { EventI, NewEventFormValuesI } from "../../models/events";
 import { useEventsContext } from "../../contexts/EventsContext";
 
 export const CreateEventPage: React.FC = () => {
-	const { events, setEvents } = useEventsContext();
+	const { setEvents } = useEventsContext();
 	const history = useHistory();
 
 	const onSubmit = (event: EventI): void => {
 		console.log("New event:", event);
-		setEvents([...events, event]);
+		setEvents((events) => [...events, event]);
 		history.goBack();
 	};
 

@@ -3,7 +3,7 @@ import moment from "moment";
 import React, { useEffect, useRef, useState } from "react";
 
 import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
+import { combineClassNames } from "../../../utils/components/classNames";
 import { SmallCalendar } from "../SmallCalendar";
 
 export interface DatePickerProps extends ComponentProps {

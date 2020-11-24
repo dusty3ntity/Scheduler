@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
+import { combineClassNames } from "../../../utils/components/classNames";
 import { CheckIcon } from "../Icons/CheckIcon";
 
 export interface CheckboxProps extends ComponentProps {

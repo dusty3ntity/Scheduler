@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import moment from "moment";
 
 import { EventI } from "../../../../models/events";
-import { getDayEventStyles } from "../../../../utils/calendar";
+import { getDayEventStyles } from "../../../../utils/components/calendar";
+import { createEventModal } from "../../../../utils/components/modals";
 
 export interface EventCardProps {
 	event: EventI;
@@ -10,28 +11,18 @@ export interface EventCardProps {
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	const timeInterval = `${moment(event.startDate).format("HH:mm")} – ${moment(event.endDate).format("HH:mm")}`;
-	const eventCardRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const handleClick = (e: MouseEvent): void => {
-			const target = e.target as HTMLDivElement;
-			if (eventCardRef.current && eventCardRef.current.contains(target)) {
-				e.stopImmediatePropagation();
-				console.log(event);
-			}
-		};
-		document.addEventListener("mousedown", handleClick);
-		return (): void => {
-			document.removeEventListener("mousedown", handleClick);
-		};
-	});
+	const handleEventClick = (e: React.MouseEvent): void => {
+		e.stopPropagation();
+		createEventModal(event);
+	};
 
 	return (
 		<div
 			className="event-card"
 			style={getDayEventStyles(event)}
 			key={event.startDate.toString()}
-			ref={eventCardRef}
+			onClick={handleEventClick}
 		>
 			<span className="title">{event.title}</span>
 			<span className="time-interval">{timeInterval}</span>

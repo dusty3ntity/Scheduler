@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 import { DayI } from "../../../../models/events";
-import { combineClassNames } from "../../../../utils/classNames";
+import { combineClassNames } from "../../../../utils/components/classNames";
 
 export interface WeekDayHeaderProps {
 	day: DayI;

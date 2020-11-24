@@ -1,0 +1,48 @@
+.event-modal .modal-content {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 2rem 2rem;
+
+	.actions-row {
+		display: flex;
+		justify-content: flex-end;
+		column-gap: 6px;
+		margin-bottom: 1rem;
+	}
+
+	.actions-btn {
+		border: none;
+		padding: 0.5rem;
+
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	.icon-col {
+		width: 2rem;
+	}
+
+	.event-details-row {
+		display: flex;
+
+		.color-icon {
+			width: 1rem;
+			height: 1rem;
+			margin-top: 0.4rem;
+			background: $light-blue-color;
+		}
+
+		.data-col {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 2;
+		}
+
+		.title {
+			font-size: 1.3rem;
+			font-weight: 600;
+		}
+	}
+}

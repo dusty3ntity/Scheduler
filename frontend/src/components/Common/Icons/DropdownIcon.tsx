@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
+import { combineClassNames } from "../../../utils/components/classNames";
 
 /**
  * Icon name: play_arrow-24px

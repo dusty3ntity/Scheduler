@@ -30,3 +30,11 @@ export const getMonthIntervalString = (date: Moment): string => {
 export const getNextTimeValue = (timeFrom: string): string => {
 	return times.find((time) => moment(time, "h:mm").diff(moment(timeFrom, "h:mm"), "minutes") > 30) || "23:59";
 };
+
+export const getFullDateString = (startDate: Moment, endDate: Moment): string => {
+	if (startDate.isSame(endDate, "year")) {
+		return `${startDate.format("dddd, MMMM D ⋅ HH:mm")} – ${endDate.format("HH:mm")}`;
+	} else {
+		return `${startDate.format("dddd, MMMM D YYYY ⋅ HH:mm")} – ${endDate.format("HH:mm")}`;
+	}
+};

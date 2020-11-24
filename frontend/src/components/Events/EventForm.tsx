@@ -5,7 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import { ComponentProps } from "../../models/components";
 import { EventI, NewEventFormValuesI } from "../../models/events";
 import { times } from "../../models/time";
-import { combineClassNames } from "../../utils/classNames";
+import { combineClassNames } from "../../utils/components/classNames";
 import { getNextTimeValue } from "../../utils/time";
 import { Button } from "../Common/Inputs/Button";
 import { DatePicker } from "../Common/Inputs/DatePicker";
@@ -29,8 +29,8 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 	const defaultFormValues = {
 		title: event?.title || "",
 		date: event?.startDate || newEventData?.date,
-		timeFrom: event ? moment(event.startDate).format("h:mm") : newEventData?.timeFrom,
-		timeTo: event ? moment(event.endDate).format("h:mm") : getNextTimeValue(newEventData!.timeFrom!),
+		timeFrom: event ? moment(event.startDate).format("HH:mm") : newEventData?.timeFrom,
+		timeTo: event ? moment(event.endDate).format("HH:mm") : getNextTimeValue(newEventData!.timeFrom!),
 	};
 
 	const { register, control, watch, formState, handleSubmit, getValues, errors, trigger } = useForm<EventFormFields>({
@@ -55,8 +55,8 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 	};
 
 	const filterTimeToValues = (): string[] => {
-		const timeFrom = moment(watch("timeFrom"), "h:mm");
-		return times.filter((time) => moment(time, "h:mm").diff(timeFrom) > 0);
+		const timeFrom = moment(watch("timeFrom"), "HH:mm");
+		return times.filter((time) => moment(time, "HH:mm").diff(timeFrom) > 0);
 	};
 
 	const timeFrom = watch("timeFrom");
@@ -114,7 +114,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 
 			<Button
 				className="submit-btn"
-				text="Create"
+				text={event ? "Update" : "Create"}
 				type="submit"
 				disabled={(!formState.isValid && formState.isDirty) || (event && !formState.isDirty)}
 			/>

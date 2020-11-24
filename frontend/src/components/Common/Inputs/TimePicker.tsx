@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import { ComponentProps } from "../../../models/components";
-import { combineClassNames } from "../../../utils/classNames";
+import { combineClassNames } from "../../../utils/components/classNames";
 import { Dropdown } from "../Dropdown";
 
 export interface TimePickerProps extends ComponentProps {
