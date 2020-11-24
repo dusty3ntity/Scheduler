@@ -1,20 +1,16 @@
 import React from "react";
 import moment from "moment";
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { EventForm } from "./EventForm";
-import { EventI, NewEventFormValuesI } from "../../models/events";
+import { EventFormValuesI, EventI, NewEventFormValuesI } from "../../models/events";
 import { useEventsContext } from "../../contexts/EventsContext";
+import { Button } from "../Common/Inputs/Button";
+import { CrossIcon } from "../Common/Icons/CrossIcon";
 
 export const CreateEventPage: React.FC = () => {
 	const { setEvents } = useEventsContext();
 	const history = useHistory();
-
-	const onSubmit = (event: EventI): void => {
-		console.log("New event:", event);
-		setEvents((events) => [...events, event]);
-		history.goBack();
-	};
 
 	const useQuery = (): URLSearchParams => {
 		return new URLSearchParams(useLocation().search);
@@ -27,11 +23,27 @@ export const CreateEventPage: React.FC = () => {
 		timeFrom: query.get("time") || "8:00",
 	};
 
-	return (
-		<div id="create-event-page" className="page">
-			<h1>New event</h1>
+	const onSubmit = (formEvent: EventFormValuesI): void => {
+		const newEvent: EventI = {
+			...formEvent,
+			id: "will-receive-this-id-from-backend",
+		};
 
-			<EventForm newEventData={newEventData} onSubmit={onSubmit} />
+		setEvents((events) => [...events, newEvent]);
+		history.goBack();
+	};
+
+	return (
+		<div id="create-event-page" className="event-page page">
+			<div className="actions-row">
+				<Button className="actions-btn" icon={<CrossIcon />} onClick={(): void => history.goBack()} />
+			</div>
+
+			<div className="page-content">
+				<h1>New event</h1>
+
+				<EventForm newEventData={newEventData} onSubmit={onSubmit} />
+			</div>
 		</div>
 	);
 };

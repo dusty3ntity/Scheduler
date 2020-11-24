@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { ComponentProps } from "../../models/components";
-import { EventI, NewEventFormValuesI } from "../../models/events";
+import { EventFormValuesI, EventI, NewEventFormValuesI } from "../../models/events";
 import { times } from "../../models/time";
 import { combineClassNames } from "../../utils/components/classNames";
 import { getNextTimeValue } from "../../utils/time";
@@ -22,7 +22,7 @@ export interface EventFormFields {
 export interface EventFormProps extends ComponentProps {
 	event?: EventI;
 	newEventData?: NewEventFormValuesI;
-	onSubmit: (event: EventI) => void;
+	onSubmit: (event: EventFormValuesI) => void;
 }
 
 export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit }) => {
@@ -41,7 +41,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 	const submit = (data: EventFormFields): void => {
 		const { title, date, timeFrom, timeTo } = data;
 
-		const event: EventI = {
+		const event: EventFormValuesI = {
 			title: title || "(no title)",
 			startDate: moment(date)
 				.set({ hour: +timeFrom.split(":")[0], minute: +timeFrom.split(":")[1], second: 0 })

@@ -7,14 +7,16 @@ import { CreateEventPage } from "../Events/CreateEventPage";
 import { EventsProvider } from "../../contexts/EventsContext";
 import { TimeProvider } from "../../contexts/TimeContext";
 import { history } from "../../config/history";
+import { UpdateEventPage } from "../Events/UpdateEventPage";
 
 export const App: React.FC = () => (
 	<Router history={history}>
 		<EventsProvider>
 			<TimeProvider>
 				<Switch>
-					<Route path="/calendar" component={CalendarPage} />
+					<Route exact path="/calendar" component={CalendarPage} />
 					<Route path="/create-event" component={CreateEventPage} />
+					<Route path="/calendar/event/:id" component={UpdateEventPage} />
 					<Route path="/" component={HomePage} />
 				</Switch>
 			</TimeProvider>

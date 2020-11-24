@@ -1,7 +1,21 @@
-#create-event-page {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.event-page {
+	padding: 2rem;
+
+	.actions-row {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.actions-btn {
+		border: none;
+		padding: 1rem;
+	}
+
+	.page-content {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
 	.event-form {
 		width: 560px;

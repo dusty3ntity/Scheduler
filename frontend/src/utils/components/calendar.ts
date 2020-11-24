@@ -20,9 +20,13 @@ export const getTimeStringByOffset = (offset: number): string => {
 	const totalMinutes = Math.floor((offset / HOUR_CELL_HIGHT) * 60);
 
 	const hours = Math.floor(offset / HOUR_CELL_HIGHT);
-	const minutes = Math.floor((totalMinutes - hours * 60) / 10) * 10;
+	const minutes = getRoundedMinutes(totalMinutes - hours * 60);
 	const minutesString = minutes === 0 ? "00" : minutes;
 
 	const time = `${hours}:${minutesString}`;
 	return time;
+};
+
+export const getRoundedMinutes = (minutes: number): number => {
+	return Math.floor(minutes / 10) * 10;
 };

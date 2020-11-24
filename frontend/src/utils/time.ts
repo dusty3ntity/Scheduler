@@ -28,7 +28,7 @@ export const getMonthIntervalString = (date: Moment): string => {
 };
 
 export const getNextTimeValue = (timeFrom: string): string => {
-	return times.find((time) => moment(time, "h:mm").diff(moment(timeFrom, "h:mm"), "minutes") > 30) || "23:59";
+	return times.find((time) => moment(time, "HH:mm").diff(moment(timeFrom, "HH:mm"), "minutes") > 30) || "23:59";
 };
 
 export const getFullDateString = (startDate: Moment, endDate: Moment): string => {

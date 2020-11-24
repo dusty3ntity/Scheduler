@@ -1,26 +1,38 @@
 import React from "react";
 import { Moment } from "moment";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 import { PlusIcon } from "../Common/Icons/PlusIcon";
 import { SmallCalendar } from "../Common/SmallCalendar";
+import { Button } from "../Common/Inputs/Button";
+import { getRoundedMinutes } from "../../utils/components/calendar";
 
 export interface SidebarProps {
 	activeDate: Moment;
 	onDayClick: (date: Date) => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => (
-	<div className="sidebar">
-		<div className="btn-container">
-			<Link to="/create-event" className="btn add-event-btn">
-				<PlusIcon />
-				<span>Create</span>
-			</Link>
-		</div>
+export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
+	const history = useHistory();
 
-		<div className="calendar-container">
-			<SmallCalendar activeDate={activeDate} onDayClick={onDayClick} />
+	const handleCreateClick = (): void => {
+		const currentTime = moment();
+		const timeString = `${currentTime.hours()}:${getRoundedMinutes(currentTime.minutes())}`;
+		const date = currentTime.format("DD-MM-YYYY");
+
+		history.push(`/create-event?date=${date}&time=${timeString}`);
+	};
+
+	return (
+		<div className="sidebar">
+			<div className="btn-container">
+				<Button className="add-event-btn" icon={<PlusIcon />} text="Create" onClick={handleCreateClick} />
+			</div>
+
+			<div className="calendar-container">
+				<SmallCalendar activeDate={activeDate} onDayClick={onDayClick} />
+			</div>
 		</div>
-	</div>
-);
+	);
+};

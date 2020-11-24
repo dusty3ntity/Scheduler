@@ -12,13 +12,19 @@ import { CrossIcon } from "../Common/Icons/CrossIcon";
 
 export interface EventCardModal extends ComponentProps {
 	event: EventI;
+	onEdit: () => void;
 	onExit: () => void;
 }
 
-export const EventCardModal: React.FC<EventCardModal> = ({ event, onExit, id, className, ...props }) => {
+export const EventCardModal: React.FC<EventCardModal> = ({ event, onEdit, onExit, id, className, ...props }) => {
 	const startDate = moment(event.startDate);
 	const endDate = moment(event.endDate);
 	const dateString = getFullDateString(startDate, endDate);
+
+	const handleEdit = (): void => {
+		onEdit();
+		onExit();
+	};
 
 	return (
 		<div id={id} className={combineClassNames("modal", "event-modal", className)} {...props}>
@@ -26,7 +32,7 @@ export const EventCardModal: React.FC<EventCardModal> = ({ event, onExit, id, cl
 
 			<div className="modal-content">
 				<div className="actions-row">
-					<Button className="actions-btn" icon={<EditIcon />} />
+					<Button className="actions-btn" icon={<EditIcon />} onClick={handleEdit} />
 					<Button className="actions-btn" icon={<DeleteIcon />} />
 					<Button className="actions-btn" icon={<CrossIcon />} onClick={onExit} />
 				</div>

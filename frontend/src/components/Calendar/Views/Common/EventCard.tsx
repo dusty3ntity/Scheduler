@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 import { EventI } from "../../../../models/events";
 import { getDayEventStyles } from "../../../../utils/components/calendar";
@@ -11,10 +12,15 @@ export interface EventCardProps {
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	const timeInterval = `${moment(event.startDate).format("HH:mm")} – ${moment(event.endDate).format("HH:mm")}`;
+	const history = useHistory();
 
-	const handleEventClick = (e: React.MouseEvent): void => {
+	const onEventUpdate = (): void => {
+		history.push(`/calendar/event/${event.id}`);
+	};
+
+	const handleCardClick = (e: React.MouseEvent): void => {
 		e.stopPropagation();
-		createEventModal(event);
+		createEventModal(event, onEventUpdate);
 	};
 
 	return (
@@ -22,7 +28,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 			className="event-card"
 			style={getDayEventStyles(event)}
 			key={event.startDate.toString()}
-			onClick={handleEventClick}
+			onClick={handleCardClick}
 		>
 			<span className="title">{event.title}</span>
 			<span className="time-interval">{timeInterval}</span>

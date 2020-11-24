@@ -5,7 +5,7 @@ import { EventI } from "./../../models/events";
 import { ComponentProps } from "../../models/components";
 import { EventCardModal } from "../../components/Events/EventModal";
 
-export const createEventModal = (event: EventI, options?: ComponentProps): void => {
+export const createEventModal = (event: EventI, onEdit: () => void, options?: ComponentProps): void => {
 	const modalContainer = document.createElement("div");
 	document.body.appendChild(modalContainer);
 
@@ -19,7 +19,8 @@ export const createEventModal = (event: EventI, options?: ComponentProps): void 
 	ReactDOM.render(
 		React.createElement(EventCardModal, {
 			onExit: destroyModal,
-			event: event,
+			event,
+			onEdit,
 			...options,
 		}),
 		modalContainer
