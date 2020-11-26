@@ -3,6 +3,8 @@ import React from "react";
 import { ComponentProps } from "../../models/components";
 import { combineClassNames } from "../../utils/components/classNames";
 
+import "./loading-indicator.scss";
+
 export const LoadingIndicator: React.FC<ComponentProps> = ({ id, className, ...props }) => {
 	return (
 		<svg

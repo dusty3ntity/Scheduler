@@ -3,6 +3,8 @@ import React from "react";
 import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
 
+import "./icons.scss";
+
 /**
  * Icon name: done-black-24dp
  */

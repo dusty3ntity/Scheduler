@@ -5,6 +5,8 @@ import { HOUR_CELL_HIGHT } from "../../../../constants/calendar";
 import { Highlighter } from "./Highlighter";
 import { useTimeContext } from "../../../../contexts/TimeContext";
 
+import "./times-column.scss";
+
 export interface TimesColumnProps {
 	isHighlighterVisible: boolean;
 }

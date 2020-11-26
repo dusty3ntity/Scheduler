@@ -10,6 +10,8 @@ import { EditIcon } from "../Common/Icons/EditIcon";
 import { DeleteIcon } from "../Common/Icons/DeleteIcon";
 import { CrossIcon } from "../Common/Icons/CrossIcon";
 
+import "./event-modal.scss";
+
 export interface EventCardModal extends ComponentProps {
 	event: EventI;
 	onEdit: () => void;

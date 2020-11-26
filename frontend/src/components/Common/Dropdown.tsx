@@ -5,6 +5,8 @@ import { ComponentProps } from "../../models/components";
 import { combineClassNames } from "../../utils/components/classNames";
 import { CheckIcon } from "./Icons/DropdownIcon";
 
+import "./dropdown.scss";
+
 export interface DropdownProps extends ComponentProps {
 	items: any[];
 	expanded: boolean;

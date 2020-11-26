@@ -2,9 +2,13 @@ import React from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
 
+import "react-calendar/dist/Calendar.css";
+
 import { LeftArrowIcon } from "./Icons/LeftArrowIcon";
 import { RightArrowIcon } from "./Icons/RightArrowIcon";
 import { ComponentProps } from "../../models/components";
+
+import "./small-calendar.scss";
 
 export interface SmallCalendarProps extends ComponentProps {
 	defaultValue?: Date;

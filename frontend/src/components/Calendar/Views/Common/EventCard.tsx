@@ -8,6 +8,8 @@ import { createEventModal } from "../../../../utils/components/modals";
 import { useEventsContext } from "../../../../contexts/EventsContext";
 import { Events } from "../../../../api/agent";
 
+import "./event-card.scss";
+
 export interface EventCardProps {
 	event: EventI;
 }

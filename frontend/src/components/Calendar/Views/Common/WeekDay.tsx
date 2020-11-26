@@ -6,6 +6,8 @@ import { DayI, EventI } from "../../../../models/events";
 import { EventCard } from "./EventCard";
 import { getTimeStringByOffset } from "../../../../utils/components/calendar";
 
+import "./week-day.scss";
+
 export interface WeekDayProps {
 	day: DayI;
 }

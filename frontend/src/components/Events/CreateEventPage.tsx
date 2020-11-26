@@ -9,6 +9,8 @@ import { Button } from "../Common/Inputs/Button";
 import { CrossIcon } from "../Common/Icons/CrossIcon";
 import { Events } from "../../api/agent";
 
+import "./event-pages.scss";
+
 export const CreateEventPage: React.FC = () => {
 	const { setEvents } = useEventsContext();
 	const [submitting, setSubmitting] = useState(false);

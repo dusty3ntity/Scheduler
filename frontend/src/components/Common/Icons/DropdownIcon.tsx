@@ -3,6 +3,8 @@ import React from "react";
 import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
 
+import "./icons.scss";
+
 /**
  * Icon name: play_arrow-24px
  */

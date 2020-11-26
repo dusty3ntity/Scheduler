@@ -2,11 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 
-import "react-calendar/dist/Calendar.css";
+import { App } from "./components/App/App";
 
 import "./styles/styles.scss";
-
-import { App } from "./components/App/App";
 
 ReactDOM.render(
 	<React.StrictMode>

@@ -6,6 +6,8 @@ import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
 import { SmallCalendar } from "../SmallCalendar";
 
+import "./date-picker.scss";
+
 export interface DatePickerProps extends ComponentProps {
 	date?: Date;
 

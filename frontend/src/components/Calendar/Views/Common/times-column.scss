@@ -1,3 +1,5 @@
+@import "../../../../styles/colors.scss";
+
 .times-col-header,
 .times-col {
 	width: 80px;
@@ -28,29 +30,5 @@
 
 	&:first-child::after {
 		content: none;
-	}
-}
-
-.time-highlighter {
-	position: absolute;
-	height: 2px;
-	width: 100%;
-	left: 0;
-
-	background-color: $red-color;
-	z-index: 100;
-
-	&::before {
-		content: "";
-		position: absolute;
-		width: 10px;
-		height: 10px;
-
-		left: 0;
-		top: 50%;
-		transform: translate(0, -50%);
-
-		background-color: $red-color;
-		border-radius: 50%;
 	}
 }

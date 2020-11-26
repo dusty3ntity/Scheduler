@@ -4,6 +4,8 @@ import moment from "moment";
 import { DayI } from "../../../../models/events";
 import { combineClassNames } from "../../../../utils/components/classNames";
 
+import "./week-day-header.scss";
+
 export interface WeekDayHeaderProps {
 	day: DayI;
 	isToday: boolean;

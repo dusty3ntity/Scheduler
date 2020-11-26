@@ -9,6 +9,8 @@ import { combineDatesWithEvents } from "../../utils/events";
 import { useEventsContext } from "../../contexts/EventsContext";
 import { useTimeContext } from "../../contexts/TimeContext";
 
+import "./calendar-page.scss";
+
 export const CalendarPage: React.FC = () => {
 	const { events } = useEventsContext();
 	const { currentTime } = useTimeContext();

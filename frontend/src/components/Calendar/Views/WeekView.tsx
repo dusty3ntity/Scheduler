@@ -8,6 +8,8 @@ import { WeekDayHeader } from "./Common/WeekDayHeader";
 import { HOUR_CELL_HIGHT } from "../../../constants/calendar";
 import { useTimeContext } from "../../../contexts/TimeContext";
 
+import "./week-view.scss";
+
 export interface WeekViewProps {
 	days: DayI[];
 	isCurrentWeek: boolean;

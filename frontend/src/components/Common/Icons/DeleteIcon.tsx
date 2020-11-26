@@ -3,6 +3,8 @@ import React from "react";
 import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
 
+import "./icons.scss";
+
 /**
  * Icon name: delete_outline-24px
  */

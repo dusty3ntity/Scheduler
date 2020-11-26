@@ -12,6 +12,8 @@ import { DatePicker } from "../Common/Inputs/DatePicker";
 import { TimePicker } from "../Common/Inputs/TimePicker";
 import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
 
+import "./event-form.scss";
+
 interface EventFormFields {
 	title: string;
 	date: Date;

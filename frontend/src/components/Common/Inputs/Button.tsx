@@ -4,6 +4,8 @@ import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
 import { LoadingIndicator } from "../LoadingIndicator";
 
+import "./button.scss";
+
 export interface ButtonProps extends ComponentProps {
 	type?: "button" | "submit" | "reset";
 	icon?: ReactNode;

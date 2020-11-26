@@ -5,6 +5,8 @@ import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
 import { Dropdown } from "../Dropdown";
 
+import "./time-picker.scss";
+
 export interface TimePickerProps extends ComponentProps {
 	values: string[];
 	onValueClick?: (value: string) => void;

@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Button } from "../Common/Inputs/Button";
 import { LeftArrowIcon } from "../Common/Icons/LeftArrowIcon";
 import { RightArrowIcon } from "../Common/Icons/RightArrowIcon";
 import { useEventsContext } from "../../contexts/EventsContext";
 import { LoadingIndicator } from "../Common/LoadingIndicator";
+
+import "./top-panel.scss";
 
 interface TopPanelProps {
 	onToday: () => void;
@@ -19,7 +22,9 @@ export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dat
 	return (
 		<div className="top-panel">
 			<div className="logo-container">
-				<span className="text">Scheduler</span>
+				<Link to="/" className="text">
+					Scheduler
+				</Link>
 				{loading && <LoadingIndicator />}
 			</div>
 

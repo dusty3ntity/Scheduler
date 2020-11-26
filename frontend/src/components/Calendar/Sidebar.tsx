@@ -8,6 +8,8 @@ import { SmallCalendar } from "../Common/SmallCalendar";
 import { Button } from "../Common/Inputs/Button";
 import { getRoundedMinutes } from "../../utils/components/calendar";
 
+import "./sidebar.scss";
+
 export interface SidebarProps {
 	activeDate: Moment;
 	onDayClick: (date: Date) => void;
