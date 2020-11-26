@@ -4,8 +4,24 @@ import axios, { AxiosResponse } from "axios";
 
 import { EventFormValuesI, EventI } from "./../models/events";
 import { SLEEP_DURATION } from "./../constants/api";
+import { createNotification } from "../utils/components/notification";
+import { NotificationType } from "../models/notifications";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
+axios.interceptors.response.use(undefined, (error) => {
+	if (process.env.REACT_APP_ENV === "DEVELOPMENT") {
+		console.error("API error:", error.response);
+	}
+
+	if (error.message === "Network Error" && !error.response) {
+		createNotification(NotificationType.Error, "The server isn't responding!");
+		throw new Error("No connection");
+	} else if (error.response.status === 500) {
+		createNotification(NotificationType.Error, "A server error occurred!");
+		throw new Error("Server error");
+	}
+});
 
 const responseBody = (response: AxiosResponse): any => response.data;
 

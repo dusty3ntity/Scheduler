@@ -8,9 +8,12 @@ import { EventsProvider } from "../../contexts/EventsContext";
 import { TimeProvider } from "../../contexts/TimeContext";
 import { history } from "../../config/history";
 import { UpdateEventPage } from "../Events/UpdateEventPage";
+import { NotificationContainer } from "../Common/Notifications/NotificationContainer";
 
 export const App: React.FC = () => (
 	<Router history={history}>
+		<NotificationContainer />
+
 		<EventsProvider>
 			<TimeProvider>
 				<Switch>
