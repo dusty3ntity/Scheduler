@@ -1,0 +1,25 @@
+@import "../../../styles/colors.scss";
+@import "./text-input.scss";
+
+.time-picker {
+	.dropdown-button,
+	.button-content-wrapper {
+		padding: 0;
+	}
+	
+	.text-input {
+		border: none;
+	}
+
+	.dropdown-menu {
+		height: 10rem;
+		padding: 0;
+		overflow: hidden auto;
+
+		border: 1px solid $main-color;
+	}
+
+	.menu-item {
+		margin: 0;
+	}
+}

@@ -1,13 +1,13 @@
 import moment from "moment";
 
-import Event from "../models/event";
+import { EventModel } from "../models/event";
 
-const seedData = async (): Promise<void> => {
-	const events = await Event.exists({});
+export const seedData = async (): Promise<void> => {
+	const events = await EventModel.exists({});
 	if (events) {
 		return;
 	}
-	const success = await Event.insertMany(testEvents);
+	const success = await EventModel.insertMany(testEvents);
 
 	if (success) {
 		console.log("Seeded test data");
@@ -38,5 +38,3 @@ const testEvents = [
 		endDate: moment().add(3, "d").hour(18).minute(45),
 	},
 ];
-
-export default seedData;

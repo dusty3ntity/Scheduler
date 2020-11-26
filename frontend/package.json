@@ -3,16 +3,18 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"axios": "^0.21.0",
 		"moment": "^2.29.1",
 		"react": "^16.13.1",
 		"react-calendar": "^3.1.0",
 		"react-dom": "^16.13.1",
+		"react-hook-form": "^6.11.3",
 		"react-router-dom": "^5.2.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"lint": "./node_modules/.bin/eslint src/index.tsx",
+		"lint": "./node_modules/.bin/eslint src/**/*.{js,ts,tsx}",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

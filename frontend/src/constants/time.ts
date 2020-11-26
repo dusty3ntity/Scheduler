@@ -1,0 +1,1 @@
+export const CURRENT_TIME_UPDATE_INTERVAL = 1 * 60 * 1000;

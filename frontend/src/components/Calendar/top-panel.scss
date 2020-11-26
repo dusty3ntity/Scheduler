@@ -1,0 +1,48 @@
+@import "../../styles/colors.scss";
+
+.top-panel {
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+	margin-bottom: 1rem;
+
+	border-bottom: 1px solid $main-color;
+
+	.logo-container {
+		width: 12.5%;
+		display: flex;
+		align-items: center;
+		column-gap: 1rem;
+		margin-right: 1rem;
+
+		font-size: 1.8rem;
+		font-weight: 600;
+	}
+
+	.btn-group {
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.today-btn {
+		font-size: 1.2rem;
+	}
+
+	.arrow-buttons {
+		display: flex;
+		margin: 0 1rem 0 2rem;
+	}
+
+	.arrow-btn {
+		margin: 0 2px;
+		padding: 4px;
+		border: none;
+	}
+
+	.date-interval {
+		font-size: 1.2rem;
+		user-select: none;
+	}
+}

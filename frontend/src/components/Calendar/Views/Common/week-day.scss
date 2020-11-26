@@ -1,0 +1,12 @@
+@import "../../../../styles/colors.scss";
+
+.week-day {
+	flex: 1;
+	position: relative;
+
+	border-right: 1px solid $grey-color;
+
+	&:last-child {
+		border: none;
+	}
+}

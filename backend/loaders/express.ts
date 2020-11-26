@@ -1,12 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 
-import routes from "../api/index";
-import config from "../config";
+import { initRoutes } from "../api/index";
+import { config } from "../config";
 
-const initializeExpress = ({ app }: { app: express.Application }): void => {
+export const initializeExpress = ({ app }: { app: express.Application }): void => {
 	app.use(bodyParser.json());
-	app.use(config.api.prefix, routes());
+	app.use(cors());
+	app.use(config.api.prefix, initRoutes());
 };
-
-export default initializeExpress;

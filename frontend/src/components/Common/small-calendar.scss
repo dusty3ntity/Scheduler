@@ -1,0 +1,84 @@
+@import "../../styles/colors.scss";
+
+.react-calendar {
+	width: 100%;
+	border: none;
+	user-select: none;
+
+	&__navigation {
+		margin-bottom: 0;
+
+		&__label {
+			order: -1;
+			text-align: left;
+			font-size: 1rem;
+			font-weight: 600;
+
+			background-color: initial !important;
+			cursor: default;
+		}
+
+		&__arrow {
+			border-radius: 50%;
+		}
+
+		&__prev2-button,
+		&__next2-button {
+			display: none;
+		}
+
+		&__prev-button,
+		&__next-button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			transition: background-color 0.3s;
+		}
+	}
+
+	&__month-view__weekdays abbr {
+		text-decoration: none;
+	}
+
+	.small-calendar-icon {
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+
+	&__month-view__days__day {
+		padding: 3.5% 0;
+		border-radius: 50%;
+
+		&--weekend {
+			color: $red-color;
+		}
+	}
+
+	&__tile {
+		margin-bottom: 4px !important;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background: $grey-color;
+		}
+
+		&--active {
+			background: $light-blue-color !important;
+			color: $background-color;
+
+			&:hover {
+				background: darken($light-blue-color, 5%) !important;
+			}
+		}
+	}
+
+	&__tile--now {
+		background: $blue-color !important;
+		color: $background-color;
+
+		&:hover {
+			background: darken($blue-color, 5%) !important;
+		}
+	}
+}
