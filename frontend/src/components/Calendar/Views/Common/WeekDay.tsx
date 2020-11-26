@@ -26,7 +26,7 @@ export const WeekDay: React.FC<WeekDayProps> = ({ day }) => {
 	return (
 		<div className="week-day" onClick={handleClick}>
 			{day.events.map((event: EventI) => (
-				<EventCard key={event.title} event={event} />
+				<EventCard key={event.id} event={event} />
 			))}
 		</div>
 	);

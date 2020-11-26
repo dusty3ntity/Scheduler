@@ -11,11 +11,12 @@ export interface DatePickerProps extends ComponentProps {
 
 	name: string;
 	value?: string;
+	defaultValue?: Date;
 	onChange?: (value: Date) => void;
 }
 
 export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
-	({ date, name, value, onChange, id, className, ...props }, ref) => {
+	({ date, name, value, defaultValue, onChange, id, className, ...props }, ref) => {
 		const [calendarExpanded, setCalendarExpanded] = useState(false);
 
 		const buttonRef = useRef<HTMLDivElement>(null);
@@ -71,7 +72,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
 
 				<div className="date-picker-menu" ref={menuRef}>
 					<SmallCalendar
-						activeDate={moment()}
+						defaultValue={moment(value).toDate()}
 						onDayClick={(date): void => {
 							if (onChange) {
 								onChange(date);

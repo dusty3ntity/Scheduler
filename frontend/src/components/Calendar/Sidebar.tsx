@@ -31,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
 			</div>
 
 			<div className="calendar-container">
-				<SmallCalendar activeDate={activeDate} onDayClick={onDayClick} />
+				<SmallCalendar onDayClick={onDayClick} />
 			</div>
 		</div>
 	);

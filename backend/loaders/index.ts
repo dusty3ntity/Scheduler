@@ -1,14 +1,12 @@
 import express from "express";
 
-import expressLoader from "./express";
-import mongooseLoader from "./mongoose";
-import seedData from "./seeder";
+import { initializeExpress } from "./express";
+import { initializeMongoose } from "./mongoose";
+import { seedData } from "./seeder";
 
-const initLoaders = async ({ app }: { app: express.Application }): Promise<void> => {
-	await mongooseLoader();
+export const initLoaders = async ({ app }: { app: express.Application }): Promise<void> => {
+	await initializeMongoose();
 	await seedData();
 
-	expressLoader({ app });
+	initializeExpress({ app });
 };
-
-export default initLoaders;

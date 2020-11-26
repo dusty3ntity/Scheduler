@@ -9,9 +9,13 @@
 
 	.logo-container {
 		width: 12.5%;
+		display: flex;
+		align-items: center;
+		column-gap: 1rem;
+		margin-right: 1rem;
+
 		font-size: 1.8rem;
 		font-weight: 600;
-		margin-right: 1rem;
 	}
 
 	.btn-group {

@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 
 import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
+import { LoadingIndicator } from "../LoadingIndicator";
 
 export interface ButtonProps extends ComponentProps {
 	type?: "button" | "submit" | "reset";
@@ -12,6 +13,7 @@ export interface ButtonProps extends ComponentProps {
 	active?: boolean;
 	disabled?: boolean;
 	onClick?: () => void;
+	loading?: boolean;
 
 	noDisabledStyles?: boolean;
 	rightIcon?: ReactNode;
@@ -29,6 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
 	active,
 	disabled,
 	onClick,
+	loading,
 
 	noDisabledStyles,
 	rightIcon,
@@ -54,11 +57,11 @@ export const Button: React.FC<ButtonProps> = ({
 				"no-disabled-styles": noDisabledStyles,
 			})}
 			type={type}
-			disabled={disabled}
+			disabled={disabled || loading}
 			onClick={handleClick}
 			{...props}
 		>
-			{icon}
+			{!loading ? icon : <LoadingIndicator />}
 			{text && <span className={combineClassNames(textClassName)}>{text}</span>}
 			{children}
 			{rightIcon}

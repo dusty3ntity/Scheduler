@@ -13,11 +13,19 @@ import { CrossIcon } from "../Common/Icons/CrossIcon";
 export interface EventCardModal extends ComponentProps {
 	event: EventI;
 	onEdit: () => void;
-	onDelete: () => void;
+	onDelete: () => Promise<void>;
 	onExit: () => void;
 }
 
-export const EventCardModal: React.FC<EventCardModal> = ({ event, onEdit, onDelete, onExit, id, className, ...props }) => {
+export const EventCardModal: React.FC<EventCardModal> = ({
+	event,
+	onEdit,
+	onDelete,
+	onExit,
+	id,
+	className,
+	...props
+}) => {
 	const startDate = moment(event.startDate);
 	const endDate = moment(event.endDate);
 	const dateString = getFullDateString(startDate, endDate);
@@ -27,8 +35,8 @@ export const EventCardModal: React.FC<EventCardModal> = ({ event, onEdit, onDele
 		onExit();
 	};
 
-	const handleDelete = (): void => {
-		onDelete();
+	const handleDelete = async (): Promise<void> => {
+		await onDelete();
 		onExit();
 	};
 

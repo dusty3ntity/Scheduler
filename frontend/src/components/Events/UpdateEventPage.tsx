@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { EventForm } from "./EventForm";
@@ -6,15 +6,26 @@ import { EventFormValuesI, EventI } from "../../models/events";
 import { useEventsContext } from "../../contexts/EventsContext";
 import { Button } from "../Common/Inputs/Button";
 import { CrossIcon } from "../Common/Icons/CrossIcon";
+import { Events } from "../../api/agent";
 
 export const UpdateEventPage: React.FC = () => {
 	const { events, setEvents } = useEventsContext();
+	const [submitting, setSubmitting] = useState(false);
 	const history = useHistory();
 
 	const { id } = useParams<{ id: string }>();
-	const event = events.find((e) => e.id === id)!;
+	const event = events.find((e) => e.id === id);
 
-	const onSubmit = (formEvent: EventFormValuesI): void => {
+	if (!event) {
+		history.push("/404");
+		return null;
+	}
+
+	const onSubmit = async (formEvent: EventFormValuesI): Promise<void> => {
+		setSubmitting(true);
+		await Events.update(id, formEvent);
+		setSubmitting(false);
+
 		const editedEvent: EventI = {
 			...formEvent,
 			id: event.id,
@@ -33,7 +44,7 @@ export const UpdateEventPage: React.FC = () => {
 			<div className="page-content">
 				<h1>Update event</h1>
 
-				<EventForm event={event} onSubmit={onSubmit} />
+				<EventForm event={event} onSubmit={onSubmit} submitting={submitting} />
 			</div>
 		</div>
 	);

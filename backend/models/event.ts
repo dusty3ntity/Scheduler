@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 import { IEvent } from "./../interfaces/IEvent";
 
-const Event = new mongoose.Schema({
+const EventSchema = new mongoose.Schema({
 	title: String,
 	startDate: Date,
 	endDate: Date,
 });
 
-export default mongoose.model<IEvent & mongoose.Document>("event", Event);
+export const EventModel = mongoose.model<IEvent & mongoose.Document>("event", EventSchema);

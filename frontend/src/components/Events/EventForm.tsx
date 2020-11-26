@@ -12,7 +12,7 @@ import { DatePicker } from "../Common/Inputs/DatePicker";
 import { TimePicker } from "../Common/Inputs/TimePicker";
 import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
 
-export interface EventFormFields {
+interface EventFormFields {
 	title: string;
 	date: Date;
 	timeFrom: string;
@@ -23,14 +23,15 @@ export interface EventFormProps extends ComponentProps {
 	event?: EventI;
 	newEventData?: NewEventFormValuesI;
 	onSubmit: (event: EventFormValuesI) => void;
+	submitting: boolean;
 }
 
-export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit }) => {
+export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit, submitting }) => {
 	const defaultFormValues = {
 		title: event?.title || "",
 		date: event?.startDate || newEventData?.date,
-		timeFrom: event ? moment(event.startDate).format("HH:mm") : newEventData?.timeFrom,
-		timeTo: event ? moment(event.endDate).format("HH:mm") : getNextTimeValue(newEventData!.timeFrom!),
+		timeFrom: event ? moment(event.startDate).format("HH:mm") : newEventData?.timeFrom || "8:00",
+		timeTo: event ? moment(event.endDate).format("HH:mm") : getNextTimeValue(newEventData?.timeFrom || "8:00"),
 	};
 
 	const { register, control, watch, formState, handleSubmit, getValues, errors, trigger } = useForm<EventFormFields>({
@@ -76,6 +77,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 					type="text"
 					placeholder="Add title"
 					autoFocus
+					maxLength={50}
 					ref={register()}
 				/>
 
@@ -117,6 +119,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 				text={event ? "Update" : "Create"}
 				type="submit"
 				disabled={(!formState.isValid && formState.isDirty) || (event && !formState.isDirty)}
+				loading={submitting}
 			/>
 		</form>
 	);

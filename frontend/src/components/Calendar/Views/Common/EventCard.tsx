@@ -6,6 +6,7 @@ import { EventI } from "../../../../models/events";
 import { getDayEventStyles } from "../../../../utils/components/calendar";
 import { createEventModal } from "../../../../utils/components/modals";
 import { useEventsContext } from "../../../../contexts/EventsContext";
+import { Events } from "../../../../api/agent";
 
 export interface EventCardProps {
 	event: EventI;
@@ -20,7 +21,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 		history.push(`/calendar/event/${event.id}`);
 	};
 
-	const onEventDelete = (): void => {
+	const onEventDelete = async (): Promise<void> => {
+		await Events.delete(event.id);
+
 		setEvents((events) => [...events.filter((e) => e.id !== event.id)]);
 	};
 

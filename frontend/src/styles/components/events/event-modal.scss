@@ -21,7 +21,7 @@
 	}
 
 	.icon-col {
-		width: 2rem;
+		width: 3rem;
 	}
 
 	.event-details-row {
@@ -41,8 +41,10 @@
 		}
 
 		.title {
+			overflow-wrap: anywhere;
 			font-size: 1.3rem;
 			font-weight: 600;
+			
 		}
 	}
 }

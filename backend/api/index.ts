@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import initEventsRoutes from "./routes/events";
+import { initEventsRoutes } from "./routes/events";
 
-export default (): Router => {
+export const initRoutes = (): Router => {
 	const router = Router();
 
 	initEventsRoutes(router);

@@ -9,12 +9,10 @@ if (envFound.error) {
 	throw new Error("Couldn't find .env file");
 }
 
-const config = {
+export const config = {
 	port: process.env.PORT!,
 	dbConnectionString: process.env.DB_CONNECTION_STRING!,
 	api: {
 		prefix: "/api",
 	},
 };
-
-export default config;

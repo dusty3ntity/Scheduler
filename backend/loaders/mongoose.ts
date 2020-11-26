@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import { Db } from "mongodb";
 
-import config from "../config";
+import { config } from "../config";
 
-const initializeMongoose = async (): Promise<Db> => {
+export const initializeMongoose = async (): Promise<Db> => {
 	try {
 		const conection = await mongoose.connect(config.dbConnectionString, {
 			useNewUrlParser: true,
@@ -16,5 +16,3 @@ const initializeMongoose = async (): Promise<Db> => {
 		process.exit(1);
 	}
 };
-
-export default initializeMongoose;

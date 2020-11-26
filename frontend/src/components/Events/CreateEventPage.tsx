@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -7,9 +7,11 @@ import { EventFormValuesI, EventI, NewEventFormValuesI } from "../../models/even
 import { useEventsContext } from "../../contexts/EventsContext";
 import { Button } from "../Common/Inputs/Button";
 import { CrossIcon } from "../Common/Icons/CrossIcon";
+import { Events } from "../../api/agent";
 
 export const CreateEventPage: React.FC = () => {
 	const { setEvents } = useEventsContext();
+	const [submitting, setSubmitting] = useState(false);
 	const history = useHistory();
 
 	const useQuery = (): URLSearchParams => {
@@ -23,10 +25,14 @@ export const CreateEventPage: React.FC = () => {
 		timeFrom: query.get("time") || "8:00",
 	};
 
-	const onSubmit = (formEvent: EventFormValuesI): void => {
+	const onSubmit = async (formEvent: EventFormValuesI): Promise<void> => {
+		setSubmitting(true);
+		const id = await Events.create(formEvent);
+		setSubmitting(false);
+
 		const newEvent: EventI = {
 			...formEvent,
-			id: "will-receive-this-id-from-backend",
+			id,
 		};
 
 		setEvents((events) => [...events, newEvent]);
@@ -42,7 +48,7 @@ export const CreateEventPage: React.FC = () => {
 			<div className="page-content">
 				<h1>New event</h1>
 
-				<EventForm newEventData={newEventData} onSubmit={onSubmit} />
+				<EventForm newEventData={newEventData} onSubmit={onSubmit} submitting={submitting} />
 			</div>
 		</div>
 	);

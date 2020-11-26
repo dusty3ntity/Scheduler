@@ -1,7 +1,7 @@
 import express from "express";
 
-import config from "./config";
-import initLoaders from "./loaders";
+import { config } from "./config";
+import { initLoaders } from "./loaders";
 
 const runServer = async () => {
 	const app = express();
