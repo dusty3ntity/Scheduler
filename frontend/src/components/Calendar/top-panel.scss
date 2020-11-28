@@ -1,5 +1,15 @@
 @import "../../styles/colors.scss";
 
+.buttonCollapsed {
+	border: 0px;
+	&:hover {
+		background: none;
+	}
+	&:active,
+	&.active {
+		background: none;
+	}
+}
 .top-panel {
 	height: 4rem;
 	display: flex;
