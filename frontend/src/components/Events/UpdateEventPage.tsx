@@ -9,6 +9,8 @@ import { CrossIcon } from "../Common/Icons/CrossIcon";
 import { Events } from "../../api/agent";
 
 import "./event-pages.scss";
+import { createNotification } from "../../utils/components/notification";
+import { NotificationType } from "../../models/notifications";
 
 export const UpdateEventPage: React.FC = () => {
 	const { events, setEvents } = useEventsContext();
@@ -35,6 +37,7 @@ export const UpdateEventPage: React.FC = () => {
 
 		setEvents((events) => [...events.filter((e) => e.id !== editedEvent.id), editedEvent]);
 		history.goBack();
+		createNotification(NotificationType.Success, "Event updated successfully!");
 	};
 
 	return (

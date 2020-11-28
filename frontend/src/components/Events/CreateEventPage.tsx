@@ -10,6 +10,8 @@ import { CrossIcon } from "../Common/Icons/CrossIcon";
 import { Events } from "../../api/agent";
 
 import "./event-pages.scss";
+import { createNotification } from "../../utils/components/notification";
+import { NotificationType } from "../../models/notifications";
 
 export const CreateEventPage: React.FC = () => {
 	const { setEvents } = useEventsContext();
@@ -39,6 +41,8 @@ export const CreateEventPage: React.FC = () => {
 
 		setEvents((events) => [...events, newEvent]);
 		history.goBack();
+
+		createNotification(NotificationType.Success, "Event created successfully!");
 	};
 
 	return (
