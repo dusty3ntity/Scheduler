@@ -16,6 +16,7 @@ export const CalendarPage: React.FC = () => {
 	const { currentTime } = useTimeContext();
 
 	const [viewWeek, setViewWeek] = useState(moment());
+	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
 	const onToday = (): void => {
 		setViewWeek(moment());
@@ -38,10 +39,13 @@ export const CalendarPage: React.FC = () => {
 				onPrev={onPreviousWeek}
 				onNext={onNextWeek}
 				dateInterval={getMonthIntervalString(viewWeek)}
+				onSidebarCollapse={() => {
+					setIsSidebarOpen((value) => !value);
+				}}
 			/>
 
 			<div className="page-content">
-				<Sidebar activeDate={viewWeek} onDayClick={(date: Date): void => setViewWeek(moment(date))} />
+				<Sidebar activeDate={viewWeek} onDayClick={(date: Date): void => setViewWeek(moment(date))} isOpen={isSidebarOpen} />
 
 				<WeekView
 					days={combineDatesWithEvents(getAllDaysInWeek(viewWeek), events)}

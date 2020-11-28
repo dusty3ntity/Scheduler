@@ -6,21 +6,25 @@ import { LeftArrowIcon } from "../Common/Icons/LeftArrowIcon";
 import { RightArrowIcon } from "../Common/Icons/RightArrowIcon";
 import { useEventsContext } from "../../contexts/EventsContext";
 import { LoadingIndicator } from "../Common/LoadingIndicator";
+import { CollapseIcon } from "../Common/Icons/CollapseIcon";
 
 import "./top-panel.scss";
+
 
 interface TopPanelProps {
 	onToday: () => void;
 	onPrev: () => void;
 	onNext: () => void;
 	dateInterval: string;
+	onSidebarCollapse: () => void;
 }
 
-export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dateInterval }) => {
+export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dateInterval, onSidebarCollapse }) => {
 	const { loading } = useEventsContext();
 
 	return (
 		<div className="top-panel">
+			<Button className="buttonCollapsed" icon={<CollapseIcon/>} onClick={onSidebarCollapse} />
 			<div className="logo-container">
 				<Link to="/" className="text">
 					Scheduler
