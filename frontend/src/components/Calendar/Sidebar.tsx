@@ -9,6 +9,7 @@ import { Button } from "../Common/Inputs/Button";
 import { getRoundedMinutes } from "../../utils/components/calendar";
 
 import "./sidebar.scss";
+import {useTranslation} from "react-i18next";
 
 export interface SidebarProps {
 	activeDate: Moment;
@@ -17,6 +18,8 @@ export interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
 	const history = useHistory();
+
+	const { t } = useTranslation();
 
 	const handleCreateClick = (): void => {
 		const currentTime = moment();
@@ -29,7 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
 	return (
 		<div className="sidebar">
 			<div className="btn-container">
-				<Button className="add-event-btn" icon={<PlusIcon />} text="Create" onClick={handleCreateClick} />
+				<Button className="add-event-btn" icon={<PlusIcon />} text={t("Create")} onClick={handleCreateClick} />
 			</div>
 
 			<div className="calendar-container">

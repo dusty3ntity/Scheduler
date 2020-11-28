@@ -13,6 +13,7 @@ import { TimePicker } from "../Common/Inputs/TimePicker";
 import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
 
 import "./event-form.scss";
+import {useTranslation} from "react-i18next";
 
 interface EventFormFields {
 	title: string;
@@ -70,6 +71,8 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		trigger("timeTo");
 	}, [timeFrom, timeTo, trigger]);
 
+	const { t} = useTranslation();
+
 	return (
 		<form id={id} className={combineClassNames("event-form", className)} onSubmit={handleSubmit(submit)}>
 			<div className="inputs-container">
@@ -77,7 +80,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 					name="title"
 					className="text-input title-input"
 					type="text"
-					placeholder="Add title"
+					placeholder={t("Add_title")}
 					autoFocus
 					maxLength={50}
 					ref={register()}
@@ -99,7 +102,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 							}}
 						/>
 
-						<span>to</span>
+						<span>{t("to")}</span>
 
 						<Controller
 							as={TimePicker}
@@ -118,7 +121,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 
 			<Button
 				className="submit-btn"
-				text={event ? "Update" : "Create"}
+				text={event ? t("Update") : t("Create")}
 				type="submit"
 				disabled={(!formState.isValid && formState.isDirty) || (event && !formState.isDirty)}
 				loading={submitting}

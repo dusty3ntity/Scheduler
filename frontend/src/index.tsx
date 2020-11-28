@@ -1,14 +1,17 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import { App } from "./components/App/App";
 
 import "./styles/styles.scss";
+import "./translator";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Suspense fallback={<div>Loading ……</div>}>
+			<App />
+		</Suspense>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

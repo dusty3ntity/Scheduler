@@ -12,6 +12,7 @@ import { Events } from "../../api/agent";
 import "./event-pages.scss";
 import { createNotification } from "../../utils/components/notification";
 import { NotificationType } from "../../models/notifications";
+import {useTranslation} from "react-i18next";
 
 export const CreateEventPage: React.FC = () => {
 	const { setEvents } = useEventsContext();
@@ -45,6 +46,8 @@ export const CreateEventPage: React.FC = () => {
 		createNotification(NotificationType.Success, "Event created successfully!");
 	};
 
+	const { t, i18n } = useTranslation();
+
 	return (
 		<div id="create-event-page" className="event-page page">
 			<div className="actions-row">
@@ -52,7 +55,7 @@ export const CreateEventPage: React.FC = () => {
 			</div>
 
 			<div className="page-content">
-				<h1>New event</h1>
+				<h1>{t("New_event")}</h1>
 
 				<EventForm newEventData={newEventData} onSubmit={onSubmit} submitting={submitting} />
 			</div>
