@@ -22,6 +22,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	const history = useHistory();
 	const { setEvents } = useEventsContext();
 	const { t } = useTranslation();
+	const startDate = moment(event.startDate);
+	const endDate = moment(event.endDate);
+	const eventDuration = endDate.diff(startDate, "minutes");
 
 	const onEventUpdate = (): void => {
 		history.push(`/calendar/event/${event.id}`);
@@ -42,7 +45,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	return (
 		<div className="event-card" style={getDayEventStyles(event)} onClick={handleCardClick}>
 			<span className="title">{event.title}</span>
-			<span className="time-interval">{timeInterval}</span>
+			{eventDuration >= 55 ? <span className="time-interval">{timeInterval}</span> : ""}
 		</div>
 	);
 };
