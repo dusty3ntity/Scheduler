@@ -51,7 +51,7 @@
 		border-radius: 50%;
 
 		&--weekend {
-			color: $red-color;
+			color: $accent-color;
 		}
 	}
 
@@ -64,11 +64,11 @@
 		}
 
 		&--active {
-			background: $light-blue-color !important;
+			background: $events-color !important;
 			color: $background-color;
 
 			&:hover {
-				background: darken($light-blue-color, 5%) !important;
+				background: darken($events-color, 5%) !important;
 			}
 		}
 	}
