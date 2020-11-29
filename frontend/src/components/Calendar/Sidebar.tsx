@@ -10,13 +10,15 @@ import { Button } from "../Common/Inputs/Button";
 import { getRoundedMinutes } from "../../utils/components/calendar";
 
 import "./sidebar.scss";
+import { combineClassNames } from "../../utils/components/classNames";
 
 export interface SidebarProps {
 	activeDate: Moment;
 	onDayClick: (date: Date) => void;
+	isOpen: boolean;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick, isOpen }) => {
 	const history = useHistory();
 	const { t } = useTranslation();
 
@@ -29,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick }) => {
 	};
 
 	return (
-		<div className="sidebar">
+		<div className={combineClassNames("sidebar", { collapsed: !isOpen })}>
 			<div className="btn-container">
 				<Button
 					className="add-event-btn"
