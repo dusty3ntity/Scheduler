@@ -9,7 +9,7 @@ import { useEventsContext } from "../../contexts/EventsContext";
 import { LoadingIndicator } from "../Common/loading/LoadingIndicator";
 import { Locale } from "../../models/locales";
 import { useLocaleContext } from "../../contexts/LocaleContext";
-import { CollapseIcon } from "../Common/Icons/CollapseIcon";
+import { MenuIcon } from "../Common/Icons/MenuIcon";
 
 import "./top-panel.scss";
 
@@ -32,7 +32,8 @@ export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dat
 
 	return (
 		<div className="top-panel">
-			<Button className="buttonCollapsed" icon={<CollapseIcon/>} onClick={onSidebarCollapse} />
+			<Button className="menu-btn" icon={<MenuIcon />} onClick={onSidebarCollapse} />
+
 			<div className="logo-container">
 				<Link to="/" className="text">
 					{t("app_title")}

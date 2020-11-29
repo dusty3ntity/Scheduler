@@ -3,7 +3,6 @@ import React, { useRef, useEffect } from "react";
 
 import { ComponentProps } from "../../models/components";
 import { combineClassNames } from "../../utils/components/classNames";
-import { CheckIcon } from "./Icons/DropdownIcon";
 
 import "./dropdown.scss";
 
@@ -66,11 +65,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 			{...props}
 		>
 			<div className="dropdown-button btn" ref={buttonRef} onClick={items.length > 0 ? onOpen : undefined}>
-				<div className="button-content-wrapper">
-					{buttonContent}
-
-					{iconVisible && <CheckIcon />}
-				</div>
+				<div className="button-content-wrapper">{buttonContent}</div>
 			</div>
 
 			<div className="dropdown-menu" ref={menuRef}>

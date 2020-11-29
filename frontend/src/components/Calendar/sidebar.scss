@@ -1,12 +1,20 @@
+@import "../../styles/colors.scss";
+
 .sidebar {
 	width: 12.5%;
+	min-width: 200px;
 	display: flex;
 	flex-direction: column;
 	margin-right: 2rem;
+	transition: all 0.4s;
 
-	&.collapsed{
-		display: none;
+	&.collapsed {
+		transform: translate(-500px, 0);
+		width: 0;
+		min-width: 0;
+		margin-right: 0;
 	}
+
 	.btn-container {
 		margin-bottom: 1rem;
 	}

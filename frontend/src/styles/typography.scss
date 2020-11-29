@@ -35,3 +35,27 @@ textarea {
 a {
 	color: $main-text-color;
 }
+
+@media (max-width: 1749px) {
+	html {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 1599px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 1399px) {
+	html {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 1099px) {
+	html {
+		font-size: 12px;
+	}
+}

@@ -1,15 +1,5 @@
 @import "../../styles/colors.scss";
 
-.buttonCollapsed {
-	border: 0px;
-	&:hover {
-		background: none;
-	}
-	&:active,
-	&.active {
-		background: none;
-	}
-}
 .top-panel {
 	height: 4rem;
 	display: flex;
@@ -18,6 +8,12 @@
 	margin-bottom: 1rem;
 
 	border-bottom: 1px solid $main-color;
+
+	.menu-btn {
+		border: none;
+		padding: 4px;
+		margin-right: 1rem;
+	}
 
 	.logo-container {
 		min-width: 12.5%;
