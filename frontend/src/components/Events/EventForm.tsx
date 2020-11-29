@@ -34,7 +34,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		title: event?.title || "",
 		date: event?.startDate || newEventData?.date,
 		timeFrom: event ? moment(event.startDate).format("HH:mm") : newEventData?.timeFrom || "8:00",
-		timeTo: event ? moment(event.endDate).format("HH:mm") : getNextTimeValue(newEventData?.timeFrom || "8:00"),
+		timeTo: event ? moment(event.endDate).format("kk:mm") : getNextTimeValue(newEventData?.timeFrom || "8:00"),
 	};
 
 	const { register, control, watch, formState, handleSubmit, getValues, errors, trigger } = useForm<EventFormFields>({

@@ -10,3 +10,7 @@ export const combineDatesWithEvents = (dates: Moment[], events: EventI[]): DayI[
 
 	return result;
 };
+
+export const getEventDuration = (event: EventI): number => {
+	return moment(event.endDate).diff(moment(event.startDate), "minutes");
+};

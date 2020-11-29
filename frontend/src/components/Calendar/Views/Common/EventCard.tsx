@@ -3,22 +3,22 @@ import moment from "moment";
 import { useHistory } from "react-router-dom";
 import { createNotification } from "../../../../utils/components/notification";
 import { NotificationType } from "../../../../models/notifications";
+import { useTranslation } from "react-i18next";
 
 import { EventI } from "../../../../models/events";
 import { getDayEventStyles } from "../../../../utils/components/calendar";
 import { createEventModal } from "../../../../utils/components/modals";
 import { useEventsContext } from "../../../../contexts/EventsContext";
 import { Events } from "../../../../api/agent";
-import { useTranslation } from "react-i18next";
 
 import "./event-card.scss";
+import { getEventDuration } from "../../../../utils/events";
 
 export interface EventCardProps {
 	event: EventI;
 }
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
-	const timeInterval = `${moment(event.startDate).format("HH:mm")} – ${moment(event.endDate).format("HH:mm")}`;
 	const history = useHistory();
 	const { setEvents } = useEventsContext();
 	const { t } = useTranslation();
@@ -39,10 +39,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 		createEventModal(event, onEventUpdate, onEventDelete);
 	};
 
+	const timeInterval = `${moment(event.startDate).format("HH:mm")} – ${moment(event.endDate).format("kk:mm")}`;
+	const eventDuration = getEventDuration(event);
+
 	return (
 		<div className="event-card" style={getDayEventStyles(event)} onClick={handleCardClick}>
 			<span className="title">{event.title}</span>
-			<span className="time-interval">{timeInterval}</span>
+			{eventDuration > 50 && <span className="time-interval">{timeInterval}</span>}
 		</div>
 	);
 };

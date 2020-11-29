@@ -42,8 +42,8 @@ export const getNextTimeValue = (timeFrom: string): string => {
 
 export const getFullDateString = (startDate: Moment, endDate: Moment): string => {
 	if (startDate.isSame(endDate, "year")) {
-		return `${startDate.format("dddd, MMMM D ⋅ kk:mm")} – ${endDate.format("kk:mm")}`;
+		return `${startDate.format("dddd, MMMM D ⋅ HH:mm")} – ${endDate.format("kk:mm")}`;
 	} else {
-		return `${startDate.format("dddd, MMMM D YYYY ⋅ kk:mm")} – ${endDate.format("kk:mm")}`;
+		return `${startDate.format("dddd, MMMM D YYYY ⋅ HH:mm")} – ${endDate.format("kk:mm")}`;
 	}
 };

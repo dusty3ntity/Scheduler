@@ -2,6 +2,7 @@
 
 .event-card {
 	position: absolute;
+	min-height: 35px;
 	width: 90%;
 	display: flex;
 	flex-direction: column;
@@ -16,5 +17,12 @@
 	.title,
 	.time-interval {
 		color: $background-color;
+		white-space: nowrap;
+		overflow: hidden;
+		padding: 1px;
+	}
+
+	.title {
+		text-overflow: ellipsis;
 	}
 }
