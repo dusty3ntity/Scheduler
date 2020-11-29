@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-import { Button } from "../Common/Inputs/Button";
-import { LeftArrowIcon } from "../Common/Icons/LeftArrowIcon";
-import { RightArrowIcon } from "../Common/Icons/RightArrowIcon";
 import { useEventsContext } from "../../contexts/EventsContext";
-import { LoadingIndicator } from "../Common/loading/LoadingIndicator";
-import { Locale } from "../../models/locales";
 import { useLocaleContext } from "../../contexts/LocaleContext";
+import { Locale } from "../../models/locales";
+import { LeftArrowIcon } from "../Common/Icons/LeftArrowIcon";
 import { MenuIcon } from "../Common/Icons/MenuIcon";
+import { RightArrowIcon } from "../Common/Icons/RightArrowIcon";
+import { Button } from "../Common/Inputs/Button";
+import { LoadingIndicator } from "../Common/loading/LoadingIndicator";
 
 import "./top-panel.scss";
 
@@ -18,10 +18,20 @@ interface TopPanelProps {
 	onPrev: () => void;
 	onNext: () => void;
 	dateInterval: string;
+	onViewSwitch: () => void;
+	isWeekView: boolean;
 	onSidebarCollapse: () => void;
 }
 
-export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dateInterval, onSidebarCollapse }) => {
+export const TopPanel: React.FC<TopPanelProps> = ({
+	onToday,
+	onPrev,
+	onNext,
+	dateInterval,
+	onSidebarCollapse,
+	onViewSwitch,
+	isWeekView,
+}) => {
 	const { loading } = useEventsContext();
 	const { locale } = useLocaleContext();
 	const { t, i18n } = useTranslation();
@@ -43,7 +53,6 @@ export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dat
 
 			<div className="navigation-buttons">
 				<Button className="today-btn" text={t("top_panel_today_button")} onClick={onToday} />
-
 				<div className="arrow-buttons">
 					<Button className="arrow-btn left-arrow" icon={<LeftArrowIcon />} onClick={onPrev} />
 					<Button className="arrow-btn right-arrow" icon={<RightArrowIcon />} onClick={onNext} />
@@ -51,6 +60,12 @@ export const TopPanel: React.FC<TopPanelProps> = ({ onToday, onPrev, onNext, dat
 			</div>
 
 			<div className="date-interval">{dateInterval}</div>
+
+			<Button
+				className="switch-view-btn"
+				text={isWeekView ? t("top_panel_three_days_view_button") : t("top_panel_week_view_button")}
+				onClick={onViewSwitch}
+			/>
 
 			<div className="locale-buttons">
 				<Button

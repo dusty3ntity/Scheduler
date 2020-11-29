@@ -1,5 +1,4 @@
 import React from "react";
-import { Moment } from "moment";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
@@ -8,17 +7,16 @@ import { PlusIcon } from "../Common/Icons/PlusIcon";
 import { SmallCalendar } from "../Common/SmallCalendar";
 import { Button } from "../Common/Inputs/Button";
 import { getRoundedMinutes } from "../../utils/components/calendar";
-
-import "./sidebar.scss";
 import { combineClassNames } from "../../utils/components/classNames";
 
+import "./sidebar.scss";
+
 export interface SidebarProps {
-	activeDate: Moment;
 	onDayClick: (date: Date) => void;
 	isOpen: boolean;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ activeDate, onDayClick, isOpen }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ onDayClick, isOpen }) => {
 	const history = useHistory();
 	const { t } = useTranslation();
 

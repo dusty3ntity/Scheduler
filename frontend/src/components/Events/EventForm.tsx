@@ -1,17 +1,17 @@
-import moment from "moment";
 import React, { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import moment from "moment";
 import { useTranslation } from "react-i18next";
 
-import { ComponentProps } from "../../models/components";
-import { EventFormValuesI, EventI, NewEventFormValuesI } from "../../models/events";
+import { EventI, NewEventFormValuesI, EventFormValuesI } from "../../models/events";
 import { times } from "../../models/time";
 import { combineClassNames } from "../../utils/components/classNames";
 import { getNextTimeValue } from "../../utils/time";
-import { Button } from "../Common/Inputs/Button";
+import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
 import { DatePicker } from "../Common/Inputs/DatePicker";
 import { TimePicker } from "../Common/Inputs/TimePicker";
-import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
+import { ComponentProps } from "../../models/components";
+import { Button } from "../Common/Inputs/Button";
 
 import "./event-form.scss";
 

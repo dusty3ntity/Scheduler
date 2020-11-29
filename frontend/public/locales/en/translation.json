@@ -3,6 +3,8 @@
 	"home_page_title": "Home",
 	"home_page_calendar_button": "Go to calendar",
 	"top_panel_today_button": "Today",
+	"top_panel_week_view_button": "Week",
+	"top_panel_three_days_view_button": "3 days",
 	"sidebar_create_event_button": "Create",
 	"create_event_page_title": "New event",
 	"update_event_page_title": "Update event",

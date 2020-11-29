@@ -1,0 +1,19 @@
+@import "../../../styles/colors.scss";
+
+.three-days-view {
+  .view-header {
+    display: flex;
+    border-bottom: 1px solid $main-color;
+
+    position: sticky;
+    top: 0;
+    background-color: $background-color;
+    z-index: 200;
+  }
+
+  .view-content {
+    flex-grow: 2;
+    display: flex;
+    position: relative;
+  }
+}
