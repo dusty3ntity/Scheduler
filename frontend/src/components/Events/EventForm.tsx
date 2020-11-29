@@ -1,16 +1,16 @@
 import moment from "moment";
-import React, { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
+import React, {useEffect} from "react";
+import {Controller, useForm} from "react-hook-form";
 
-import { ComponentProps } from "../../models/components";
-import { EventFormValuesI, EventI, NewEventFormValuesI } from "../../models/events";
-import { times } from "../../models/time";
-import { combineClassNames } from "../../utils/components/classNames";
-import { getNextTimeValue } from "../../utils/time";
-import { Button } from "../Common/Inputs/Button";
-import { DatePicker } from "../Common/Inputs/DatePicker";
-import { TimePicker } from "../Common/Inputs/TimePicker";
-import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
+import {ComponentProps} from "../../models/components";
+import {EventFormValuesI, EventI, NewEventFormValuesI} from "../../models/events";
+import {times} from "../../models/time";
+import {combineClassNames} from "../../utils/components/classNames";
+import {getNextTimeValue} from "../../utils/time";
+import {Button} from "../Common/Inputs/Button";
+import {DatePicker} from "../Common/Inputs/DatePicker";
+import {TimePicker} from "../Common/Inputs/TimePicker";
+import {getIsTimeValid, getIsTimeFromBeforeTimeTo} from "../../utils/validators/time";
 
 import "./event-form.scss";
 
@@ -28,7 +28,7 @@ export interface EventFormProps extends ComponentProps {
 	submitting: boolean;
 }
 
-export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newEventData, onSubmit, submitting }) => {
+export const EventForm: React.FC<EventFormProps> = ({id, className, event, newEventData, onSubmit, submitting}) => {
 	const defaultFormValues = {
 		title: event?.title || "",
 		date: event?.startDate || newEventData?.date,
@@ -36,21 +36,21 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		timeTo: event ? moment(event.endDate).format("HH:mm") : getNextTimeValue(newEventData?.timeFrom || "8:00"),
 	};
 
-	const { register, control, watch, formState, handleSubmit, getValues, errors, trigger } = useForm<EventFormFields>({
+	const {register, control, watch, formState, handleSubmit, getValues, errors, trigger} = useForm<EventFormFields>({
 		defaultValues: defaultFormValues,
 		mode: "onChange",
 	});
 
 	const submit = (data: EventFormFields): void => {
-		const { title, date, timeFrom, timeTo } = data;
+		const {title, date, timeFrom, timeTo} = data;
 
 		const event: EventFormValuesI = {
 			title: title || "(no title)",
 			startDate: moment(date)
-				.set({ hour: +timeFrom.split(":")[0], minute: +timeFrom.split(":")[1], second: 0 })
+				.set({hour: +timeFrom.split(":")[0], minute: +timeFrom.split(":")[1], second: 0})
 				.toDate(),
 			endDate: moment(date)
-				.set({ hour: +timeTo.split(":")[0], minute: +timeTo.split(":")[1], second: 0 })
+				.set({hour: +timeTo.split(":")[0], minute: +timeTo.split(":")[1], second: 0})
 				.toDate(),
 		};
 
@@ -84,12 +84,12 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 				/>
 
 				<div className="time-row">
-					<Controller as={DatePicker} name="date" control={control} />
+					<Controller as={DatePicker} name="date" control={control}/>
 
 					<div className="times-container">
 						<Controller
 							as={TimePicker}
-							className={combineClassNames("time-from-picker", { error: errors.timeFrom })}
+							className={combineClassNames("time-from-picker", {error: errors.timeFrom})}
 							values={times}
 							name="timeFrom"
 							control={control}
@@ -103,7 +103,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 
 						<Controller
 							as={TimePicker}
-							className={combineClassNames("time-to-picker", { error: errors.timeTo })}
+							className={combineClassNames("time-to-picker", {error: errors.timeTo})}
 							values={filterTimeToValues()}
 							name="timeTo"
 							control={control}

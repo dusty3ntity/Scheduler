@@ -14,6 +14,18 @@ export const getAllDaysInWeek = (date: Moment): Moment[] => {
 	return result;
 };
 
+export const getThreeDaysInWeek = (date: Moment): Moment[] => {
+	const dayStart = moment(date).startOf("day");
+	const result: Moment[] = [];
+
+	for (let i = 0; i < 3; i++) {
+		const day = moment(dayStart).add(i, "days");
+		result.push(day);
+	}
+
+	return result;
+};
+
 export const getMonthIntervalString = (date: Moment): string => {
 	const weekStart = moment(date).startOf("isoWeek");
 	const weekEnd = moment(date).endOf("isoWeek");
