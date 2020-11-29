@@ -3,6 +3,8 @@
 	"home_page_title": "Домашня сторінка",
 	"home_page_calendar_button": "Відкрити календар",
 	"top_panel_today_button": "Сьогодні",
+	"top_panel_week_view_button": "Тиждень",
+	"top_panel_three_days_view_button": "3 дні",
 	"sidebar_create_event_button": "Створити",
 	"create_event_page_title": "Нова подія",
 	"update_event_page_title": "Змінити подію",

@@ -11,5 +11,5 @@ export const getIsTimeValid = (time: string): boolean => {
 };
 
 export const getIsTimeFromBeforeTimeTo = (timeFrom: string, timeTo: string): boolean => {
-	return moment(timeFrom, "h:mm").isBefore(moment(timeTo, "h:mm"));
+	return moment(timeFrom, "H:mm").isBefore(moment(timeTo, "H:mm"));
 };
