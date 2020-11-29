@@ -1,3 +1,4 @@
+import { Locale } from "./../models/locales";
 import moment, { Moment } from "moment";
 
 import { times } from "./../models/time";
@@ -14,9 +15,9 @@ export const getAllDaysInWeek = (date: Moment): Moment[] => {
 	return result;
 };
 
-export const getMonthIntervalString = (date: Moment): string => {
-	const weekStart = moment(date).startOf("isoWeek");
-	const weekEnd = moment(date).endOf("isoWeek");
+export const getMonthIntervalString = (date: Moment, locale: Locale): string => {
+	const weekStart = moment(date).locale(locale).startOf("isoWeek");
+	const weekEnd = moment(date).locale(locale).endOf("isoWeek");
 
 	if (weekStart.get("month") === weekEnd.get("month") && weekStart.get("year") === weekEnd.get("year")) {
 		return weekStart.format("MMMM y");

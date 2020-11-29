@@ -8,12 +8,14 @@ import { WeekView } from "./Views/WeekView";
 import { combineDatesWithEvents } from "../../utils/events";
 import { useEventsContext } from "../../contexts/EventsContext";
 import { useTimeContext } from "../../contexts/TimeContext";
+import { useLocaleContext } from "../../contexts/LocaleContext";
 
 import "./calendar-page.scss";
 
 export const CalendarPage: React.FC = () => {
 	const { events } = useEventsContext();
 	const { currentTime } = useTimeContext();
+	const { locale } = useLocaleContext();
 
 	const [viewWeek, setViewWeek] = useState(moment());
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -38,7 +40,7 @@ export const CalendarPage: React.FC = () => {
 				onToday={onToday}
 				onPrev={onPreviousWeek}
 				onNext={onNextWeek}
-				dateInterval={getMonthIntervalString(viewWeek)}
+				dateInterval={getMonthIntervalString(viewWeek, locale)}
 				onSidebarCollapse={() => {
 					setIsSidebarOpen((value) => !value);
 				}}

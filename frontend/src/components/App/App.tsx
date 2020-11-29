@@ -9,20 +9,23 @@ import { TimeProvider } from "../../contexts/TimeContext";
 import { history } from "../../config/history";
 import { UpdateEventPage } from "../Events/UpdateEventPage";
 import { NotificationContainer } from "../Common/Notifications/NotificationContainer";
+import { LocaleProvider } from "../../contexts/LocaleContext";
 
 export const App: React.FC = () => (
 	<Router history={history}>
 		<NotificationContainer />
 
-		<EventsProvider>
-			<TimeProvider>
-				<Switch>
-					<Route exact path="/calendar" component={CalendarPage} />
-					<Route path="/create-event" component={CreateEventPage} />
-					<Route path="/calendar/event/:id" component={UpdateEventPage} />
-					<Route path="/" component={HomePage} />
-				</Switch>
-			</TimeProvider>
-		</EventsProvider>
+		<LocaleProvider>
+			<EventsProvider>
+				<TimeProvider>
+					<Switch>
+						<Route exact path="/calendar" component={CalendarPage} />
+						<Route path="/create-event" component={CreateEventPage} />
+						<Route path="/calendar/event/:id" component={UpdateEventPage} />
+						<Route path="/" component={HomePage} />
+					</Switch>
+				</TimeProvider>
+			</EventsProvider>
+		</LocaleProvider>
 	</Router>
 );
