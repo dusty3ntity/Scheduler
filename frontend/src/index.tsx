@@ -2,14 +2,15 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 
+import "./translator";
 import { App } from "./components/App/App";
+import { LoadingScreen } from "./components/Common/loading/LoadingScreen";
 
 import "./styles/styles.scss";
-import "./translator";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Suspense fallback={<div>Loading ……</div>}>
+		<Suspense fallback={<LoadingScreen />}>
 			<App />
 		</Suspense>
 	</React.StrictMode>,

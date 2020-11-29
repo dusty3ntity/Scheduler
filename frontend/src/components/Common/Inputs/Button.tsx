@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 import { ComponentProps } from "../../../models/components";
 import { combineClassNames } from "../../../utils/components/classNames";
-import { LoadingIndicator } from "../LoadingIndicator";
+import { LoadingIndicator } from "../loading/LoadingIndicator";
 
 import "./button.scss";
 

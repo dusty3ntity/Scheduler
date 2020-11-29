@@ -6,6 +6,7 @@ import { EventFormValuesI, EventI } from "./../models/events";
 import { SLEEP_DURATION } from "./../constants/api";
 import { createNotification } from "../utils/components/notification";
 import { NotificationType } from "../models/notifications";
+import i18n from "../translator";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
@@ -15,10 +16,10 @@ axios.interceptors.response.use(undefined, (error) => {
 	}
 
 	if (error.message === "Network Error" && !error.response) {
-		createNotification(NotificationType.Error, "The server isn't responding!");
+		createNotification(NotificationType.Error, i18n.t("network_error_notification"));
 		throw new Error("No connection");
 	} else if (error.response.status === 500) {
-		createNotification(NotificationType.Error, "A server error occurred!");
+		createNotification(NotificationType.Error, i18n.t("server_error_notification"));
 		throw new Error("Server error");
 	}
 });

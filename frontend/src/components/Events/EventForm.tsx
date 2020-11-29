@@ -1,6 +1,7 @@
 import moment from "moment";
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 import { ComponentProps } from "../../models/components";
 import { EventFormValuesI, EventI, NewEventFormValuesI } from "../../models/events";
@@ -13,7 +14,6 @@ import { TimePicker } from "../Common/Inputs/TimePicker";
 import { getIsTimeValid, getIsTimeFromBeforeTimeTo } from "../../utils/validators/time";
 
 import "./event-form.scss";
-import {useTranslation} from "react-i18next";
 
 interface EventFormFields {
 	title: string;
@@ -46,7 +46,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		const { title, date, timeFrom, timeTo } = data;
 
 		const event: EventFormValuesI = {
-			title: title || "(no title)",
+			title: title || `(${t("event_form_title_default_value")})`,
 			startDate: moment(date)
 				.set({ hour: +timeFrom.split(":")[0], minute: +timeFrom.split(":")[1], second: 0 })
 				.toDate(),
@@ -71,7 +71,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 		trigger("timeTo");
 	}, [timeFrom, timeTo, trigger]);
 
-	const { t} = useTranslation();
+	const { t } = useTranslation();
 
 	return (
 		<form id={id} className={combineClassNames("event-form", className)} onSubmit={handleSubmit(submit)}>
@@ -80,7 +80,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 					name="title"
 					className="text-input title-input"
 					type="text"
-					placeholder={t("Add_title")}
+					placeholder={t("event_form_title_input_placeholder")}
 					autoFocus
 					maxLength={50}
 					ref={register()}
@@ -102,7 +102,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 							}}
 						/>
 
-						<span>{t("to")}</span>
+						<span>{t("event_form_time_to_prefix")}</span>
 
 						<Controller
 							as={TimePicker}
@@ -121,7 +121,7 @@ export const EventForm: React.FC<EventFormProps> = ({ id, className, event, newE
 
 			<Button
 				className="submit-btn"
-				text={event ? t("Update") : t("Create")}
+				text={event ? t("event_form_update_button") : t("event_form_create_button")}
 				type="submit"
 				disabled={(!formState.isValid && formState.isDirty) || (event && !formState.isDirty)}
 				loading={submitting}

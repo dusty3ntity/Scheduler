@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { EventForm } from "./EventForm";
 import { EventFormValuesI, EventI } from "../../models/events";
@@ -7,15 +8,16 @@ import { useEventsContext } from "../../contexts/EventsContext";
 import { Button } from "../Common/Inputs/Button";
 import { CrossIcon } from "../Common/Icons/CrossIcon";
 import { Events } from "../../api/agent";
-
-import "./event-pages.scss";
 import { createNotification } from "../../utils/components/notification";
 import { NotificationType } from "../../models/notifications";
+
+import "./event-pages.scss";
 
 export const UpdateEventPage: React.FC = () => {
 	const { events, setEvents } = useEventsContext();
 	const [submitting, setSubmitting] = useState(false);
 	const history = useHistory();
+	const { t } = useTranslation();
 
 	const { id } = useParams<{ id: string }>();
 	const event = events.find((e) => e.id === id);
@@ -37,7 +39,7 @@ export const UpdateEventPage: React.FC = () => {
 
 		setEvents((events) => [...events.filter((e) => e.id !== editedEvent.id), editedEvent]);
 		history.goBack();
-		createNotification(NotificationType.Success, "Event updated successfully!");
+		createNotification(NotificationType.Success, t("event_updated_notification"));
 	};
 
 	return (
@@ -47,7 +49,7 @@ export const UpdateEventPage: React.FC = () => {
 			</div>
 
 			<div className="page-content">
-				<h1>Update event</h1>
+				<h1>{t("update_event_page_title")}</h1>
 
 				<EventForm event={event} onSubmit={onSubmit} submitting={submitting} />
 			</div>

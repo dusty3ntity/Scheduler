@@ -1,0 +1,19 @@
+{
+	"app_title": "Планувальник",
+	"home_page_title": "Домашня сторінка",
+	"home_page_calendar_button": "Відкрити календар",
+	"top_panel_today_button": "Сьогодні",
+	"sidebar_create_event_button": "Створити",
+	"create_event_page_title": "Нова подія",
+	"update_event_page_title": "Змінити подію",
+	"event_form_title_input_placeholder": "Додайте заголовок",
+	"event_form_title_default_value": "без заголовку",
+	"event_form_time_to_prefix": "до",
+	"event_form_create_button": "Створити",
+	"event_form_update_button": "Зберегти",
+	"network_error_notification": "Сервер не відповідає!",
+	"server_error_notification": "Сталася помилка сервера!",
+	"event_created_notification": "Подія успішно створена!",
+	"event_updated_notification": "Подія успішно оновлена!",
+	"event_deleted_notification": "Подія успішно видалена!"
+}
