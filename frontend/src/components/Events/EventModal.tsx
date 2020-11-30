@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
 import { EventI } from "../../models/events";
@@ -28,6 +28,8 @@ export const EventCardModal: React.FC<EventCardModal> = ({
 	className,
 	...props
 }) => {
+	const [isDeleting, setIsDeleting] = useState(false);
+
 	const startDate = moment(event.startDate);
 	const endDate = moment(event.endDate);
 	const dateString = getFullDateString(startDate, endDate);
@@ -38,7 +40,10 @@ export const EventCardModal: React.FC<EventCardModal> = ({
 	};
 
 	const handleDelete = async (): Promise<void> => {
+		setIsDeleting(true);
 		await onDelete();
+		setIsDeleting(false);
+
 		onExit();
 	};
 
@@ -49,7 +54,7 @@ export const EventCardModal: React.FC<EventCardModal> = ({
 			<div className="modal-content">
 				<div className="actions-row">
 					<Button className="actions-btn" icon={<EditIcon />} onClick={handleEdit} />
-					<Button className="actions-btn" icon={<DeleteIcon />} onClick={handleDelete} />
+					<Button className="actions-btn" icon={<DeleteIcon />} onClick={handleDelete} loading={isDeleting} />
 					<Button className="actions-btn" icon={<CrossIcon />} onClick={onExit} />
 				</div>
 
