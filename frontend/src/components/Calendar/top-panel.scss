@@ -59,6 +59,18 @@
 		margin-left: auto;
 	}
 
+	.arrow-icon {
+		&:hover {
+			fill: $light-grey-color;
+		}
+	}
+
+	.menu-icon {
+		&:hover {
+			fill: $light-grey-color;
+		}
+	}
+
 	.locale-buttons {
 		display: flex;
 		column-gap: 1rem;
