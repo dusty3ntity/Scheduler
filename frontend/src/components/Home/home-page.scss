@@ -1,12 +1,70 @@
+@import "../../styles/colors.scss";
+
 #home-page {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	overflow: hidden;
 
 	.btn {
-		font-size: 1.3rem;
+		border-color: $accent-color;
+		border-radius: 12px;
+		font-size: 1.8rem;
 		font-weight: 500;
 		padding: 0.5rem 1rem;
-		margin-top: 1rem;
+		margin-top: 0.6rem;
+	}
+
+	.title {
+		font-size: 2.7rem;
+	}
+
+	.pic {
+		position: absolute;
+	}
+
+	.wave1 {
+		min-width: 960px;
+		width: 101%;
+		top: 0px;
+		left: 0px;
+	}
+
+	.wave2 {
+		min-width: 1056px;
+		width: 110%;
+		top: 60%;
+		left: -10%;
+	}
+
+	@media (min-width: 960px) {
+		.person-skate {
+			width: 30%;
+			left: 63%;
+			top: 40%;
+		}
+
+		.person-skate2 {
+			width: 25%;
+			left: 5%;
+			top: 50%;
+			transform: rotate(25deg);
+		}
+	}
+
+	@media (max-width: 960px) {
+		.person-skate {
+			width: 288px;
+			left: 604.8px;
+			top: 40%;
+		}
+
+		.person-skate2 {
+			width: 240px;
+			left: 48px;
+			top: 50%;
+			transform: rotate(25deg);
+		}
 	}
 }

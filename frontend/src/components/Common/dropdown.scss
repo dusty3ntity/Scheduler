@@ -62,11 +62,11 @@
 		}
 
 		&:hover {
-			background: lighten($light-blue-color, 20%);
+			background: lighten($events-color, 20%);
 		}
 
 		&.active {
-			background: $light-blue-color;
+			background: $events-color;
 		}
 	}
 

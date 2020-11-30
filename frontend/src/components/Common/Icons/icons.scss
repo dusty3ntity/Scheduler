@@ -1,7 +1,11 @@
 @import "../../../styles/colors.scss";
 
 .icon {
-	fill: $main-color;
+	fill: $button-iside-color;
 	height: 32px;
 	width: 32px;
+}
+
+.dark-background{
+	fill: $main-color;
 }

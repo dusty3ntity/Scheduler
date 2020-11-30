@@ -7,9 +7,10 @@
 	padding: 1rem;
 	margin-bottom: 1rem;
 
-	border-bottom: 1px solid $main-color;
+	border-bottom: 2px solid $main-color;
 
 	.menu-btn {
+		background-color: white;
 		border: none;
 		padding: 4px;
 		margin-right: 1rem;
@@ -38,13 +39,14 @@
 
 	.arrow-buttons {
 		display: flex;
-		margin: 0 1rem 0 2rem;
+		margin: 0 0.5rem 0 0.5rem;
 	}
 
 	.arrow-btn {
-		margin: 0 2px;
-		padding: 4px;
+		margin: 0 1px;
+		padding: 0px;
 		border: none;
+		background-color: white;
 	}
 
 	.date-interval {
@@ -55,6 +57,18 @@
 	.switch-view-btn {
 		font-size: 1.2rem;
 		margin-left: auto;
+	}
+
+	.arrow-icon {
+		&:hover {
+			fill: $light-grey-color;
+		}
+	}
+
+	.menu-icon {
+		&:hover {
+			fill: $light-grey-color;
+		}
 	}
 
 	.locale-buttons {
