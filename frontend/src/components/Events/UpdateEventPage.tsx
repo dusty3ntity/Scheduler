@@ -28,18 +28,22 @@ export const UpdateEventPage: React.FC = () => {
 	}
 
 	const onSubmit = async (formEvent: EventFormValuesI): Promise<void> => {
-		setSubmitting(true);
-		await Events.update(id, formEvent);
-		setSubmitting(false);
+		try {
+			setSubmitting(true);
+			await Events.update(id, formEvent);
 
-		const editedEvent: EventI = {
-			...formEvent,
-			id: event.id,
-		};
+			const editedEvent: EventI = {
+				...formEvent,
+				id: event.id,
+			};
 
-		setEvents((events) => [...events.filter((e) => e.id !== editedEvent.id), editedEvent]);
-		history.goBack();
-		createNotification(NotificationType.Success, t("event_updated_notification"));
+			setEvents((events) => [...events.filter((e) => e.id !== editedEvent.id), editedEvent]);
+			history.goBack();
+			createNotification(NotificationType.Success, t("event_updated_notification"));
+		} catch {
+		} finally {
+			setSubmitting(false);
+		}
 	};
 
 	return (

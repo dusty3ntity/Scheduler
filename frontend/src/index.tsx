@@ -4,7 +4,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import "./translator";
 import { App } from "./components/App/App";
-import { LoadingScreen } from "./components/Common/loading/LoadingScreen";
+import { LoadingScreen } from "./components/Common/Loading/LoadingScreen";
 
 import "./styles/styles.scss";
 

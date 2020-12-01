@@ -9,7 +9,7 @@ import { LeftArrowIcon } from "../Common/Icons/LeftArrowIcon";
 import { MenuIcon } from "../Common/Icons/MenuIcon";
 import { RightArrowIcon } from "../Common/Icons/RightArrowIcon";
 import { Button } from "../Common/Inputs/Button";
-import { LoadingIndicator } from "../Common/loading/LoadingIndicator";
+import { LoadingIndicator } from "../Common/Loading/LoadingIndicator";
 
 import "./top-panel.scss";
 

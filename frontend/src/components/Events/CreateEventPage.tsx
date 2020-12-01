@@ -33,19 +33,23 @@ export const CreateEventPage: React.FC = () => {
 	};
 
 	const onSubmit = async (formEvent: EventFormValuesI): Promise<void> => {
-		setSubmitting(true);
-		const id = await Events.create(formEvent);
-		setSubmitting(false);
+		try {
+			setSubmitting(true);
+			const id = await Events.create(formEvent);
 
-		const newEvent: EventI = {
-			...formEvent,
-			id,
-		};
+			const newEvent: EventI = {
+				...formEvent,
+				id,
+			};
 
-		setEvents((events) => [...events, newEvent]);
-		history.goBack();
+			setEvents((events) => [...events, newEvent]);
+			history.goBack();
 
-		createNotification(NotificationType.Success, t("event_created_notification"));
+			createNotification(NotificationType.Success, t("event_created_notification"));
+		} catch {
+		} finally {
+			setSubmitting(false);
+		}
 	};
 
 	return (

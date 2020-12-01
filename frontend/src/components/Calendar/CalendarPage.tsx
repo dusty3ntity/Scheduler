@@ -19,22 +19,36 @@ export const CalendarPage: React.FC = () => {
 	const { locale } = useLocaleContext();
 
 	const [viewDate, setViewDate] = useState(currentTime);
-	const [isWeekView, setIsWeekView] = useState(true);
+	const [isThreeDaysView, setIsThreeDaysView] = useState(
+		localStorage.getItem("isThreeDaysView") === "true" ? true : false
+	);
 
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+	const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
+		localStorage.getItem("isSidebarCollapsed") === "true" ? true : false
+	);
+
+	const handleSidebarButtonClick = () => {
+		localStorage.setItem("isSidebarCollapsed", !isSidebarCollapsed + "");
+		setIsSidebarCollapsed(!isSidebarCollapsed);
+	};
+
+	const handleCalendarViewSwitch = () => {
+		localStorage.setItem("isThreeDaysView", !isThreeDaysView + "");
+		setIsThreeDaysView(!isThreeDaysView);
+	};
 
 	const onTodayButtonClick = (): void => {
 		setViewDate(currentTime);
 	};
 
 	const onPrevButtonClick = (): void => {
-		const daysToSubtract = isWeekView ? 7 : 3;
+		const daysToSubtract = isThreeDaysView ? 3 : 7;
 		const newDate = moment(viewDate).subtract(daysToSubtract, "d");
 		setViewDate(newDate);
 	};
 
 	const onNextButtonClick = (): void => {
-		const daysToAdd = isWeekView ? 7 : 3;
+		const daysToAdd = isThreeDaysView ? 3 : 7;
 		const newDate = moment(viewDate).add(daysToAdd, "d");
 		setViewDate(newDate);
 	};
@@ -42,34 +56,30 @@ export const CalendarPage: React.FC = () => {
 	return (
 		<div id="calendar-page" className="page">
 			<TopPanel
-				onSidebarCollapse={() => {
-					setIsSidebarOpen((value) => !value);
-				}}
+				onSidebarCollapse={handleSidebarButtonClick}
 				onToday={onTodayButtonClick}
 				onPrev={onPrevButtonClick}
 				onNext={onNextButtonClick}
 				dateInterval={
-					isWeekView
-						? getWeekViewIntervalString(viewDate, locale)
-						: getThreeDaysViewIntervalString(viewDate, locale)
+					isThreeDaysView
+						? getThreeDaysViewIntervalString(viewDate, locale)
+						: getWeekViewIntervalString(viewDate, locale)
 				}
-				onViewSwitch={() => {
-					setIsWeekView((value) => !value);
-				}}
-				isWeekView={isWeekView}
+				onViewSwitch={handleCalendarViewSwitch}
+				isWeekView={!isThreeDaysView}
 			/>
 
 			<div className="page-content">
-				<Sidebar onDayClick={(date: Date): void => setViewDate(moment(date))} isOpen={isSidebarOpen} />
+				<Sidebar onDayClick={(date: Date): void => setViewDate(moment(date))} isOpen={!isSidebarCollapsed} />
 
-				{isWeekView && (
+				{!isThreeDaysView && (
 					<WeekView
 						days={combineDatesWithEvents(getDaysArray(moment(viewDate).startOf("isoWeek"), 7), events)}
 						isCurrentWeek={viewDate.isSame(currentTime, "week")}
 					/>
 				)}
 
-				{!isWeekView && (
+				{isThreeDaysView && (
 					<ThreeDaysView
 						days={combineDatesWithEvents(getDaysArray(viewDate, 3), events)}
 						isCurrentWeek={viewDate.isSame(currentTime, "week")}

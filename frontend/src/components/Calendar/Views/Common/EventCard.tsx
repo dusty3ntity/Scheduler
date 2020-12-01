@@ -28,10 +28,12 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 	};
 
 	const onEventDelete = async (): Promise<void> => {
-		await Events.delete(event.id);
+		try {
+			await Events.delete(event.id);
 
-		setEvents((events) => [...events.filter((e) => e.id !== event.id)]);
-		createNotification(NotificationType.Success, t("event_deleted_notification"));
+			setEvents((events) => [...events.filter((e) => e.id !== event.id)]);
+			createNotification(NotificationType.Success, t("event_deleted_notification"));
+		} catch {}
 	};
 
 	const handleCardClick = (e: React.MouseEvent): void => {

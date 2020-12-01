@@ -27,10 +27,14 @@ export const EventsProvider: React.FC = ({ children }): JSX.Element => {
 
 	useEffect(() => {
 		const getEvents = async (): Promise<void> => {
-			setLoading(true);
-			const events = await Events.list();
-			setEvents(events);
-			setLoading(false);
+			try {
+				setLoading(true);
+				const events = await Events.list();
+				setEvents(events);
+			} catch {
+			} finally {
+				setLoading(false);
+			}
 		};
 
 		getEvents();
